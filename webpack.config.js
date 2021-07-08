@@ -37,7 +37,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 // configuration
 const title = 'Hear-data';
-const websiteURL = 'https://NA.com';
+const websiteURL = 'https://NA.com'; //TBC
 const description = 'Hear Data';
 const eslintConfig = require('./.eslintrc.js');
 const port = '9000';
