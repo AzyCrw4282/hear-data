@@ -158,7 +158,7 @@ const Def = class PlayControls extends React.Component {
 					!paused || !disabled ?
 						<IconButton
 							component={Fab}
-							color="primary"
+							color="transparent"
 							label="Pause"
 							onClick={pause}
 						>
@@ -166,7 +166,7 @@ const Def = class PlayControls extends React.Component {
 						</IconButton> :
                         <IconButton
                         component={Fab}
-                        color="secondary"
+                        color="primary"
                         disabled={disabled || !audioLoaded}
                         label="Play"
                         onClick={play}
