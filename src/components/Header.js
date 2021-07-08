@@ -13,11 +13,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import HelpIcon from '@material-ui/icons/Help';
 import DeleteIcon from '@material-ui/icons/DeleteForever';
 import SpreadsheetIcon from '@material-ui/icons/List';
-import ConfirmationDialog from './ConfirmationDialog';
+import ConfirmModal from './ConfirmationModal';
 
 import hearDataIcon from '../images/hearDataIcon.jpg';
 
-const confirm = createConfirmation(ConfirmationDialog);
+const confirm = createConfirmation(ConfirmModal);
 
 const styles = theme => ({
 	title: {
