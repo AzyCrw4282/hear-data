@@ -69,6 +69,7 @@ const Def = class AlbumIconCover extends React.Component {
 					width,
 					height
 				}}/>
-        </div>;
+            }
+        </div>
     }
 };
