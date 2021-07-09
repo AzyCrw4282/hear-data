@@ -7,7 +7,7 @@ import React from 'react';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
 import ExportEngine from '../engine/ExportEngine';
-import setStateFromEvent from '../util/setStateFromEvent';
+import setStateFromEvent from '../extensions/setStateFromEvents';
 import { saveAs } from 'file-saver';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -244,7 +244,7 @@ const Def = class ExportModal extends React.Component {
 					Cancel
 				</Button>
 				<Button onClick={this.exportAudioHandler} color="secondary" autoFocus disabled={exporting}>
-					Export
+					Download
 				</Button>
 			</DialogActions>
 		</Dialog>;
