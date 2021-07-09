@@ -130,8 +130,23 @@ const Def = class AppHeader extends React.Component {
 	}
 };
 
+
 const AppHeader = withStyles(styles)(
 	connect(['data'], actions)(Def)
 );
 
 export default AppHeader;
+
+/*
+withStyles and connect are Higher Order Components (HOC), which is a pattern where you 
+take a component and you add features to it by wrapping a new component around it 
+(usually to add props to it, or hook into lifecycle methods). Def is the original 
+component. AppHeader is the same component as Def, enhanced by the two HOCs.
+HOCs were a popular pattern, but they've largely been replaced by Hooks in 
+modern react components
+More-> https://medium.com/@tevthuku/all-hail-unistore-9b2f79184592
+
+Takes an array of states that are to be accessed by the Component(if they are many), 
+if its just one you can pass a single string and actions as a second param, 
+->The App components receives the actions and the state as props..
+*/
