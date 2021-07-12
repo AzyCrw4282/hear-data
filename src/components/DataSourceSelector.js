@@ -8,7 +8,6 @@ import { connect } from 'unistore/react';
 import { actions } from '../store';
 import { createConfirmation } from 'react-confirm';
 import { sampleIdRegex } from '../util/regex';
-import { MAX_DATA_FILE_SIZE, UPLOAD_ROW_LIMIT } from '../constants';
 import isMobile from 'ismobilejs';
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
@@ -21,16 +20,13 @@ import WelcomeDialog from './WelcomeDialog';
 import AssetSelectDialog from './AssetSelectDialog';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import Typography from '@material-ui/core/Typography';
-import DeleteIcon from '@material-ui/icons/Delete';
 import InfoIcon from '@material-ui/icons/Info';
-import IconButton from './IconButton';
 import ConfirmationDialog from './ConfirmationDialog';
-import CheckIcon from '@material-ui/icons/Check';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import * as dataLibrary from '../assets/dataLibrary';
+import * as dataLibrary from '../extensions/dataLibrary';
 import parseSpreadSheet from '../util/data';
 
 const styles = theme => ({
@@ -123,15 +119,32 @@ const Def = class DataSourceSelector extends React.Component {
 		});
 	}
 
-	handleClickListItem = selectedId => {
+    onSelect = () => {
+		const id = this.state.selectedId;
+		const { dataSourceId } = this.props;
+		if (!dataSourceId) {
+			this.setDataSourceId(id);
+		} else if (id !== dataSourceId) {
+			const confirmation = <React.Fragment>Changing source will reset your current environment. Are you sure you want to proceed?</React.Fragment>;
+			confirm({ confirmation, options: {
+				no: 'Cancel',
+				yes: 'Change Data Source'
+			} }).then(() => {
+				this.setDataSourceId(id);
+			});
+		}
+		this.props.onClose();
+	}
+
+	handleClickListItem = Id => {
 		this.setState({
-			selectedId
+			Id
 		});
 	}
 
-	handleDoubleClickListItem = selectedId => {
+	handleDoubleClickListItem = Id => {
 		this.setState({
-			selectedId
+			Id
 		}, this.onSelect);
 	}
 
@@ -145,30 +158,27 @@ const Def = class DataSourceSelector extends React.Component {
 		this.props.setDataSourceId(id);
 	}
 
-	onSelect = () => {
-		const id = this.state.selectedId;
-		const { dataSourceId } = this.props;
-		if (!dataSourceId) {
-			this.setDataSourceId(id);
-		} else if (id !== dataSourceId) {
-			const confirmation = <React.Fragment>Changing data source will reset your work. This cannot be undone. Are you sure you want to proceed?</React.Fragment>;
-			confirm({ confirmation, options: {
-				no: 'Cancel',
-				yes: 'Change Data Source'
-			} }).then(() => {
-				this.setDataSourceId(id);
-			});
-		}
-		this.props.onClose();
-	}
 
-	onUpload = newAssets => {
-		if (newAssets.length) {
-			const selectedId = newAssets[0].id;
+	onUpload = content => {
+		if (content.length) {
+			const selectedId = content[0].id;
 			if (selectedId) {
 				this.setState({ selectedId });
 			}
 		}
+	}
+
+	componentDidMount() {
+		dataLibrary.activate(this.assetsUpdated);
+		if (this.props.dataSourceId) {
+			this.setState({
+				selectedId: this.props.dataSourceId
+			});
+		}
+	}
+
+	componentWillUnmount() {
+		dataLibrary.activate(this.assetsUpdated);
 	}
 
 	assetsUpdated = assets => {
@@ -178,20 +188,6 @@ const Def = class DataSourceSelector extends React.Component {
 			assets: sorted
 		});
 	}
-
-	componentDidMount() {
-		dataLibrary.subscribe(this.assetsUpdated);
-		if (this.props.dataSourceId) {
-			this.setState({
-				selectedId: this.props.dataSourceId
-			});
-		}
-	}
-
-	componentWillUnmount() {
-		dataLibrary.unsubscribe(this.assetsUpdated);
-	}
-
 
 	render() {
 		const {
@@ -217,7 +213,7 @@ const Def = class DataSourceSelector extends React.Component {
 			getFileData={parseSpreadSheet}
 			title="Select Data Source"
 			type="spreadsheet"
-			accept={fileAcceptTypeString}
+			accept={allowedFormats}
 			loading={loading}
 			disabled={!selectedId}
 			onSelect={this.onSelect}
@@ -247,7 +243,6 @@ const Def = class DataSourceSelector extends React.Component {
 			</Table>
 		</AssetSelectDialog>;
 	}
-
 };
 
 const DataSelectDialog = withStyles(styles)(
