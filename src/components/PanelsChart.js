@@ -18,12 +18,11 @@ const defaultColors = {
 	disabledSelected: 'gray'
 };
 
-const Def = class BarChart extends React.Component {
+const Def = class LineChartPanel extends React.Component {
 	static propTypes = {
-		// classes: PropTypes.object,
 		className: PropTypes.string,
 		data: PropTypes.object,
-		rowIndex: PropTypes.number,
+		rowID: PropTypes.number,
 		fieldIndex: PropTypes.number,
 		filterField: PropTypes.number,
 		filterValues: PropTypes.arrayOf(PropTypes.string),
@@ -35,7 +34,7 @@ const Def = class BarChart extends React.Component {
 	paint = ctx => {
 		const {
 			data,
-			rowIndex,
+			rowID,
 			fieldIndex,
 			min,
 			max,
@@ -43,17 +42,11 @@ const Def = class BarChart extends React.Component {
 			colors
 		} = this.props;
 
-		/*
-		todo: handle missing data
-		- no fieldIndex
-		- no fields
-		- no rows
-		*/
 
 		const hasFilterField = this.props.filterField >= 0 &&
 			this.props.filterField < data.fields.length &&
 			typeof this.props.filterField === 'number';
-		const filterField = hasFilterField ?
+		const filterFields = hasFilterField ?
 			this.props.filterField :
 			fieldIndex;
 		const filterByString = hasFilterField && data.fields[filterField].type === 'string';
@@ -61,15 +54,15 @@ const Def = class BarChart extends React.Component {
 		const ratio = window.devicePixelRatio;
 		const { width, height } = ctx.canvas;
 		const { normalized, rows } = data;
-		const rowCount = normalized.length;
-		const horizSpacing = width / rowCount;
-		const w = Math.max(horizSpacing - ratio, 1);
+		const rowCounts = normalized.length;
+		const horizDist = width / rowCounts;
+		const w = Math.max(horizDist - ratio, 1);
 
 		const field = data.fields[fieldIndex];
 		const zero = field.type === 'int' || field.type === 'float' ?
 			Math.max(0, Math.min(1, -field.min * field.scale)) :
 			0;
-		const y = height * (1 - zero);
+		const yPoint = height * (1 - zero);
 		const zeroHeight = zero < 0.5 ? -ratio : ratio;
 
 		const {
@@ -79,16 +72,13 @@ const Def = class BarChart extends React.Component {
 			disabledSelected
 		} = { ...defaultColors, ...colors };
 
-		/*
-		todo: what if more rows than pixels
-		*/
 		ctx.beginPath();
-		console.log(rowCount);
-		for (let i = 0; i < rowCount; i++) {
+		console.log(rowCounts);
+		for (let i = 0; i < rowCounts; i++) {
 			const val = normalized[i][fieldIndex];
 			const filterVal = filterByString ?
-				rows[i][filterField] :
-				normalized[i][filterField];
+				rows[i][filterFields] :
+				normalized[i][filterFields];
 
 			if (!isNaN(val)) {
 				const passesFilter = filterByString ?
@@ -96,35 +86,32 @@ const Def = class BarChart extends React.Component {
 					filterVal >= min && filterVal <= max;
 
 				if (passesFilter) {
-					ctx.fillStyle = i === rowIndex ? selected : main;
+					ctx.fillStyle = i === rowID ? selected : main;
 				} else {
-					ctx.fillStyle = i === rowIndex ? disabledSelected : disabled;
+					ctx.fillStyle = i === rowID ? disabledSelected : disabled;
 				}
 
-				const x = i * horizSpacing;
+				const xPoint = i * horizDist;
 				const valueHeight = height * (zero - val);
-				const h = Math.abs(valueHeight) < ratio ? zeroHeight : valueHeight; // so bar is at least 1px high
+				const heights = Math.abs(valueHeight) < ratio ? zeroHeight : valueHeight; // so bar is at least 1px high
 
-				if (i !== rowCount - 1){ctx.fillRect(x, y, w/10, h);}
+				if (i !== rowCounts - 1){ctx.fillRect(xPoint, yPoint, w/10, heights);}
 				ctx.strokeStyle = 'green';
 				ctx.lineWidth = 1;
 				ctx.stroke();
 				if (i !== 0){
 					ctx.moveTo(prevX,prevY + prevH);
-					ctx.lineTo(x,y+h);
+					ctx.lineTo(xPoint,yPoint+heights);
 				}
-				const prevX = x;
-				const prevY = y;
-				const prevH = h;
+				const prevX = xPoint;
+				const prevY = yPoint;
+				const prevH = heights;
 			}
 		}
 	}
 
 	render() {
 
-		/*
-		todo: adjust height
-		*/
 		return <div className={this.props.className || ''}>
 			<RemountOnResize>
 				<CanvasEnhancer paint={this.paint}/>
@@ -133,12 +120,5 @@ const Def = class BarChart extends React.Component {
 	}
 };
 
-// const BarChart = withStyles(styles)(Def);
-const BarChart = Def;
-export default BarChart;
-
-
-
-
-
-
+const LineChartPanel = Def;
+export default LineChartPanel;
