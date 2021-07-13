@@ -60,7 +60,7 @@ const octavesConstructorMenu = range => Array.from(Array(range), (n, i) => {
 	return <MenuItem value={octaves} key={octaves}>{label}</MenuItem>;
 });
 
-const Def = class ScaleTrackControls extends React.Component {
+const Def = class PanelMediaControls extends React.Component {
 	static propTypes = {
 		classes: PropTypes.object.isRequired,
 		prevTrack: PropTypes.object.isRequired,
@@ -89,20 +89,20 @@ const Def = class ScaleTrackControls extends React.Component {
 		return track;
 	}
 
-	handleSoundFilter = event => {
-		const { setTrack } = this.props;
-		const oldTrack = this.props.prevTrack || {};
-		const { name, value } = event.target;
-		const track = this.modifiedTrackConfig(oldTrack, name, value);
-		setTrack(track, track.id);
-	}
-
 	handleOctaveScale= event => {
 		const octaves = event.target.value;
 		const scaleRange = octaves * 7 + 1; // inclusive
 		const { setTrack } = this.props;
 		const oldTrack = this.props.track || {};
 		const track = this.modifiedTrackConfig(oldTrack, 'scaleRange', scaleRange);
+		setTrack(track, track.id);
+	}
+
+	handleSoundFilter = event => {
+		const { setTrack } = this.props;
+		const oldTrack = this.props.prevTrack || {};
+		const { name, value } = event.target;
+		const track = this.modifiedTrackConfig(oldTrack, name, value);
 		setTrack(track, track.id);
 	}
 
@@ -158,7 +158,8 @@ const Def = class ScaleTrackControls extends React.Component {
 					{octavesConstructorMenu(maxOctaveRange)}
 				</Select>
 			</FormControl> 
-            : null}
+            : 
+            null}
 
 			<FormControl className={classes.keyControlGroup}>
 				<InputLabel htmlFor={'track-tempo-factor-' + track.id}>Tempo</InputLabel>
@@ -178,7 +179,7 @@ const Def = class ScaleTrackControls extends React.Component {
 		</div>;
 	}
 };
-const ScaleTrackControls = withStyles(styles)(
+const PanelMediaControls = withStyles(styles)(
 	connect(['data'], actions)(Def)
 );
-export default ScaleTrackControls;
+export default PanelMediaControls;
