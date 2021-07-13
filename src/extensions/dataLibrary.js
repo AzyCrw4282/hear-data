@@ -116,3 +116,8 @@ function updateSubscriptions() {
 	metadata = getDataLibrary().assets(); // todo: copy(?) and sort
 	subscriptions.forEach(callback => callback(metadata));
 }
+
+export default function num(num, altValue) {
+	n = parseFloat(num);
+	return isNaN(n) ? altValue : num;
+}

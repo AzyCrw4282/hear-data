@@ -95,7 +95,7 @@ const Def = class UpperPanelControls extends React.Component {
 				value={curTrack.intensityField > 0 ? curTrack.intensityField : ''}
 
 				classes={{
-					root: classes.dataSource
+					root: classes.selectedField
 				}}
 			>
 				<MenuItem value="">
@@ -115,7 +115,7 @@ const Def = class UpperPanelControls extends React.Component {
 					name: 'instrument'
 				}}
 				classes={{
-					root: classes.instrument
+					root: classes.selectedInstrument
 				}}
 			>
 				<MenuItem value="piano">Piano</MenuItem>
@@ -133,40 +133,3 @@ const Def = class UpperPanelControls extends React.Component {
 const UpperPanelControls = connect(['data'], actions)(withStyles(styles)(Def));
 export default UpperPanelControls;
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    }
-
-
-
-
-
-
-
-
-
-
-
-}
