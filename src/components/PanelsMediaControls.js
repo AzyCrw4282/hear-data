@@ -106,6 +106,7 @@ const Def = class PanelMediaControls extends React.Component {
 		setTrack(track, track.id);
 	}
 
+	//error here. Tbs..
 	handleToggleVolume = () => {
 		const { prevTrack, setTrack } = this.props;
 		setTrack(Object.assign({}, prevTrack, {
