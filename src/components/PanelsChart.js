@@ -22,7 +22,7 @@ const Def = class LineChartPanel extends React.Component {
 	static propTypes = {
 		className: PropTypes.string,
 		data: PropTypes.object,
-		rowID: PropTypes.number,
+		rowIndex: PropTypes.number,
 		fieldIndex: PropTypes.number,
 		filterField: PropTypes.number,
 		filterValues: PropTypes.arrayOf(PropTypes.string),
@@ -34,7 +34,7 @@ const Def = class LineChartPanel extends React.Component {
 	paint = ctx => {
 		const {
 			data,
-			rowID,
+			rowIndex,
 			fieldIndex,
 			min,
 			max,
@@ -86,9 +86,9 @@ const Def = class LineChartPanel extends React.Component {
 					filterVal >= min && filterVal <= max;
 
 				if (passesFilter) {
-					ctx.fillStyle = i === rowID ? selected : main;
+					ctx.fillStyle = i === rowIndex ? selected : main;
 				} else {
-					ctx.fillStyle = i === rowID ? disabledSelected : disabled;
+					ctx.fillStyle = i === rowIndex ? disabledSelected : disabled;
 				}
 
 				const xPoint = i * horizDist;

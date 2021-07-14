@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 /*
 Borrowed from
-https://gist.github.com/JobLeonard/987731e86b473d42cd1885e70eed616a
+https://gist.github.com/JobLeonard/987731e86b473d42cd1885e70eed616a 
 and modified
 */
 const Def = class CanvasEnhancer extends React.Component {
