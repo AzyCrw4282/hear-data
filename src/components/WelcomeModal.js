@@ -97,7 +97,7 @@ const Def = class WelcomeModal extends React.Component {
 			<DialogContent className={classes.dialogContent}>
 				<div className={classes.title}>
 					<Typography id="modalTitle" color="black" variant="h6">Welcome to {APP_TITLE}</Typography>
-					<Typography variant="subtitle1">Tool to covert data into sound</Typography>
+					<Typography variant="subtitle1">Tool to covert data into sound. Please note that the application may involve data collecton via 3rd parties.</Typography>
 				</div>
 				<DialogActions className={classes.dialogActions}>
 					<Button onClick={onClose} variant="contained" color="primary">Enter Site - {APP_TITLE}</Button>

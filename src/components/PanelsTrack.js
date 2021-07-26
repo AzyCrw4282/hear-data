@@ -12,9 +12,15 @@ import { connect } from 'unistore/react';
 import { actions } from '../store';
 import num from '../extension/dataLibrary';
 const styles = () => ({
+	root: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'flex-end'
+	},	
     container: {
 		display: 'flex',
-		flexDirection: 'row'
+		flexDirection: 'column',
+		minWidth: 250
     },
     selectedField: {
         flex: 0.5
@@ -85,50 +91,55 @@ const Def = class UpperPanelControls extends React.Component {
 				.map(({name, type, max, min}, i) => ({name, type, min, max, i}))
 				.filter(({type, max, min}) => type !== 'string' && max !== min);
 
-		return <React.Fragment>
-			<WideSelect
-				name="field-value"
-				id={'intensity-field-' + track.id}  			
-				onChange={this.handleFieldChangeEvt}
-				label="Current Field"
-				value={track.intensityField > -1 ? track.intensityField : ''}
-				classes={{
-					root: classes.selectedField
-				}}
-			>
-				<MenuItem value="">
-					<em>None</em>
-				</MenuItem>
-				{fields
-					.map(({name, i}) => <MenuItem value={i+1} key={i+1}>{name}</MenuItem>)
-                }
-			</WideSelect>
-			<WideSelect
-				name="Instrument"
-				id={'track-instrument-' + track.id}
-				value={instrument}          
-				label="Instrument"
-				onChange={this.handleInstrumentChangeEvt}
-				inputProps={{
-					name: 'instrument'
-				}}
-				classes={{
-					root: classes.selectedInstrument
-				}}
-			>
-				<MenuItem value="piano">Piano</MenuItem>
-                <MenuItem value="violin">Violin</MenuItem>
-				<MenuItem value="trumpet">Trumpet</MenuItem>
-				<MenuItem value="electricGuitar">Guitar</MenuItem>
-				<MenuItem value="oscillator">Oscillator</MenuItem>
-			</WideSelect>
+			return <React.Fragment>
+				<div className={classes.root}>
+					<FormControl className={classes.container}>
+						<WideSelect
+							name="field-value"
+							id={'intensity-field-' + track.id}  			
+							onChange={this.handleFieldChangeEvt}
+							label="Current Field"
+							value={track.intensityField > -1 ? track.intensityField : ''}
+							classes={{
+								root: classes.selectedField
+							}}
+							>
+							<MenuItem value="">
+								<em>None</em>
+							</MenuItem>
+							{fields
+								.map(({name, i}) => <MenuItem value={i+1} key={i+1}>{name}</MenuItem>)
+							}
+						</WideSelect>
+					</FormControl>
+					<FormControl className={classes.container}>
+						<WideSelect
+							name="Instrument"
+							id={'track-instrument-' + track.id}
+							value={instrument}          
+							label="Instrument"
+							onChange={this.handleInstrumentChangeEvt}
+							inputProps={{
+								name: 'instrument'
+							}}
+							classes={{
+								root: classes.selectedInstrument
+							}}
+							>
+							<MenuItem value="piano">Piano</MenuItem>
+							<MenuItem value="violin">Violin</MenuItem>
+							<MenuItem value="trumpet">Trumpet</MenuItem>
+							<MenuItem value="electricGuitar">Guitar</MenuItem>
+							<MenuItem value="oscillator">Oscillator</MenuItem>
+						</WideSelect>
+					</FormControl>
+				</div>
 		</React.Fragment>;
-    }
+	}
 };
 
 // const ScaleTrackInstrumentSelect = connect(['data'], actions)(withStyles(styles)(Def));
 // export default ScaleTrackInstrumentSelect;
-    
 
 const UpperPanelControls = connect(['data'], actions)(withStyles(styles)(Def));
 export default UpperPanelControls;

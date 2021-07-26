@@ -61,8 +61,8 @@ const Def = class ExportAudioBtn extends React.Component {
 		return <React.Fragment>
 			<Button
 				disabled={disabledState || loadingState || !audioLoadedState}
-				variant="contained"
 				color="Primary"
+				variant="flat"
                 aria-label = 'Open modal for options'
 				onClick={this.exportAudioAction}
 				className={classes.button}
