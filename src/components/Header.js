@@ -23,6 +23,7 @@ const styles = theme => ({
 	title: {
 		flex: 2,
 		display: 'flex',
+		marginLeft: '30%',
 		alignItems: 'center',
 		'& > *': {
 			display: 'flex'
@@ -58,7 +59,7 @@ const styles = theme => ({
 const Def = class AppHeader extends React.Component {
 	static propTypes = {
         selectData: PropTypes.func.isRequired,
-		data: PropTypes.object,
+		dataSource: PropTypes.object,
 		onDataToggle: PropTypes.func,
 		classes: PropTypes.object.isRequired,
 		resetClick: PropTypes.func.isRequired,
@@ -72,7 +73,7 @@ const Def = class AppHeader extends React.Component {
 		confirm({ confirmation, options: {
 			no: 'No',
 			yes: 'Yes'
-		} }).then(() => {
+		}}).then(() => {
 			this.props.resetState();
 			return null;
 		}).catch(() => {
@@ -92,51 +93,52 @@ const Def = class AppHeader extends React.Component {
 	render() {
 		const {
 			classes,
-			data,
-			selectData,
+			dataSource,
+			selectDataSource,
 			onDataToggle
 		} = this.props;
 
 		const logo = <img src={hearDataIcon} alt="Data Icon logo" className={classes.logo}/>;
 
 		return <React.Fragment>
+				<IconButton onClick={onDataToggle} label="Click to view data" color="inherit">
+					<SpreadsheetIcon/>
+				</IconButton>				
+				<span className={classes.resetButton}>
+				<IconButton label="Reset Project" color="inherit" onClick={this.processResetAction}>
+					<DeleteIcon/>
+				</IconButton>
+				</span>
+				<IconButton onClick={this.helpButton} label="Click to see help" color="inherit">
+					<HelpIcon/>
+				</IconButton>
+		
 			<Typography className={classes.title} variant="h5" color="white" component="h1">
 				{APP_WEBSITE_URL ? <a href={APP_WEBSITE_URL} target="_blank" rel="noopener noreferrer">
 					{logo}
 				</a> : logo}
-				{data ?
+				{dataSource ?
 					<React.Fragment>
-						<span className={classes.titleText} onClick={selectData}>
-							{data.metadata.title}
+						<span className={classes.titleText} onClick={selectDataSource}>
+							{dataSource.metadata.title}
 						</span>
-						<IconButton label="Select Data Source" color="inherit" onClick={selectData} data-tour-id="upload-data">
+						<IconButton label="Select Data Source" color="inherit" onClick={selectDataSource} data-tour-id="upload-data">
 							<EditIcon/>
 						</IconButton>
 					</React.Fragment> : null
 				}
 			</Typography>
-			<span className={classes.resetButton}>
-				<IconButton label="Reset Project" color="inherit" onClick={this.processResetAction}>
-					<DeleteIcon/>
-				</IconButton>
-			</span>
-			<IconButton onClick={this.helpButton} label="Click to see help" color="inherit">
-				<HelpIcon/>
-			</IconButton>
-			<IconButton onClick={onDataToggle} label="Click to view data" color="inherit">
-				<SpreadsheetIcon/>
-			</IconButton>
+
 		</React.Fragment>;
 	}
 };
 
 
 const AppHeader = withStyles(styles)(
-	connect(['data'], actions)(Def)
+	connect(['dataSource'], actions)(Def)
 );
 
 export default AppHeader;
-
 /*
 withStyles and connect are Higher Order Components (HOC), which is a pattern where you 
 take a component and you add features to it by wrapping a new component around it 

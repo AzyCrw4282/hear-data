@@ -29,6 +29,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import * as dataLibrary from '../extensions/dataLibrary';
 import parseSpreadSheet from '../util/data';
 
+
 const styles = theme => ({
 	table: {
 		display: 'flex',
@@ -78,31 +79,43 @@ const allowedFormats = [
     '.csv',
     'Api-Endpoint'
 ]
-const dropZoneContent = <React.Fragment>
-	<Typography>
-		{isMobile.any ?
-			'Click here to upload the file' :
-			'Drag and drop files here or click to search locally'}
-	</Typography>
-	<List dense>{uploadRequirements}</List>
-</React.Fragment>;
+function assetSort(a, b) {
+	const aTitle = a.metadata.title.toLowerCase();
+	const bTitle = b.metadata.title.toLowerCase();
+	if (aTitle !== bTitle) {
+		return aTitle > bTitle ? 1 : -1;
+	}
+
+	if (a.permanent !== b.permanent) {
+		return b.permanent - a.permanent;
+	}
+
+	return a.lastModified - b.lastModified;
+}
 
 const uploadRequirements = [
 	'File types supported: .xls, .xlsx, .csv',
 	`Please ensure they have Column headers`,
-	`Maximum file size: ${Math.round(5 * 1024 * 1024 / (1024 * 1024) * 100) / 100}MB`,
-	`Up to 1000 rows of data`
+	`Maximum file size: ${Math.round(5 * 1024 * 1024 / (1024 * 1024) * 100) / 100}MB`
 ].map((text, i) =>
 	<ListItem key={i} dense>
 		<ListItemIcon><InfoIcon /></ListItemIcon>
 		<ListItemText primary={text} />
 	</ListItem>);
 
+const dropZoneContent = <React.Fragment>
+	<Typography>
+			Drag and drop files here or click to search locally
+	</Typography>
+	<List dense>{uploadRequirements}</List>
+</React.Fragment>;
+
+
 const Def = class DataSourceSelector extends React.Component {
 	static propTypes = {
 		classes: PropTypes.object.isRequired,
 		onCloseState: PropTypes.func.isRequired,
-		configState: PropTypes.object.isRequired,
+		config: PropTypes.object.isRequired,
 		setConfigState: PropTypes.func.isRequired,
 		dataSourceId: PropTypes.string,
 		setDataSourceId: PropTypes.func.isRequired
@@ -126,7 +139,7 @@ const Def = class DataSourceSelector extends React.Component {
 			this.setDataSourceId(id);
 		} else if (id !== dataSourceId) {
 			const confirmation = <React.Fragment>Changing source will reset your current environment. Are you sure you want to proceed?</React.Fragment>;
-			confirm({ confirmation, options: {
+			confirmDialog({ confirmation, options: {
 				no: 'Cancel',
 				yes: 'Change Data Source'
 			} }).then(() => {
@@ -136,15 +149,15 @@ const Def = class DataSourceSelector extends React.Component {
 		this.props.onClose();
 	}
 
-	handleClickListItem = Id => {
+	handleClickListItem = selectedId => {
 		this.setState({
-			Id
+			selectedId
 		});
 	}
 
-	handleDoubleClickListItem = Id => {
+	handleDoubleClickListItem = selectedId => {
 		this.setState({
-			Id
+			selectedId
 		}, this.onSelect);
 	}
 
@@ -169,7 +182,7 @@ const Def = class DataSourceSelector extends React.Component {
 	}
 
 	componentDidMount() {
-		dataLibrary.activate(this.assetsUpdated);
+		dataLibrary.subscribe(this.assetsUpdated);
 		if (this.props.dataSourceId) {
 			this.setState({
 				selectedId: this.props.dataSourceId
@@ -178,7 +191,7 @@ const Def = class DataSourceSelector extends React.Component {
 	}
 
 	componentWillUnmount() {
-		dataLibrary.activate(this.assetsUpdated);
+		dataLibrary.subscribe(this.assetsUpdated);
 	}
 
 	assetsUpdated = assets => {
@@ -192,11 +205,11 @@ const Def = class DataSourceSelector extends React.Component {
 	render() {
 		const {
 			classes,
-			configState,
+			config,
 			...props
 		} = this.props;
 
-		if (configState.showWelcome) {
+		if (config.showWelcome) {
 			return <WelcomeDialog onClose={this.getStarted}/>;
 		}
 
