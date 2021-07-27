@@ -19,6 +19,8 @@ const styles = () => ({
 	},	
     container: {
 		display: 'flex',
+		width: '30%',
+		padding: '5px',
 		flexDirection: 'column',
 		minWidth: 250
     },

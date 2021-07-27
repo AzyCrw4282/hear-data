@@ -20,7 +20,7 @@ import NavigateNext from '@material-ui/icons/NavigateNext';
 import IconButton from './IconButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import ExportAudioButton from './ExportAudioButton';
+import ExportAudioButton from './ExportBtnFunc';
 import DurationControl from './DurationControl';
 
 const styles = theme => ({

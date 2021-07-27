@@ -86,7 +86,6 @@ const Def = class DataPanel extends React.Component {
 		data: PropTypes.object,
         currentRowID: PropTypes.number,
 		setCurrentRow: PropTypes.func.isRequired
-
 	}
 
     onCellTrigger = (column, data) => {
