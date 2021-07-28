@@ -10,8 +10,7 @@ import NoteIcon from '@material-ui/icons/NoteAdd';
 import trackType from './PanelHandlers';
 
 
-
-const nameType =  trackTypes['scale'].name;
+const nameType =  trackType['scale'].name;
 const keyValue = ['scale'].map(key => ({
 	key
 }));
@@ -68,8 +67,7 @@ const Def = class AddTrackButton extends React.Component {
 
 		const { open } = this.state;
 
-		return 
-        <div className={classNames(classes.root, className)}>
+		return <div className={classNames(classes.root, className)}>
 			<SpeedDial
 				ariaLabel="Create new track"
 				className={''}
