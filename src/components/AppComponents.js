@@ -1,7 +1,5 @@
 /*
 * Main App components handler class. Code adopted from the credited project.
-
-Clean this and and finish index.js. Then, code review for structure and file comparisons 
 */
 
 import React from 'react';
@@ -16,17 +14,11 @@ import Paper from '@material-ui/core/Paper';
 import Drawer from '@material-ui/core/Drawer';
 
 import Shell from './HeaderHandler';
-import AppLoader from './AppLoader'; //Tbc - loading screen displayed under loding condition
-import AppHeader from './Header';
-
-import MainSpeechControls from './MainSpeechControls';
-import PlayControls from './PlayControls';
-import AudioSelectDialog from './AudioSelectDialog';
-import DataSelectDialog from './DataSelectDialog';
+import AppHeader from './Header';//Tbc - loading screen displayed under loding condition
+import PlayControls from './MediaControls';
+import DataSelectDialog from './DataSourceSelector';
 import AddPanelButton from './AddPanelButton';
-import UpgradePrompt from './UpgradePrompt';
-
-import SectionLoader from './SectionLoader';
+import SectionLoader from './../extensions/LoaderFunction';
 import LoadFailure from './Loader';
 import asyncComponent from './AsyncHandler';
 
@@ -43,7 +35,7 @@ const DataTableView = asyncComponent(() => import('./DataTableView'), {
 const styles = (theme) => ({
 	parent: {
 		flex: 1,
-		minHeight: 0,
+		minHeight: 1,
 		display: 'flex',
 		overflow: 'hidden' // so we don't get weird drop shadows on sides
 	},
@@ -52,7 +44,6 @@ const styles = (theme) => ({
         overflow: 'hidden',
 		display: 'flex',
 		flexDirection: 'column',
-
 	},
     playBar: {
 		width: '100%',
@@ -62,7 +53,7 @@ const styles = (theme) => ({
 			darken(theme.palette.background.paper, 0.05) :
 			lighten(theme.palette.background.paper, 0.05)
 	},
-	drawerOpen: {
+	drawerActive: {
 		'&$drawerDocked': {
 			'@media (max-width: 640px)': {
 				minWidth: '35%',
@@ -73,16 +64,10 @@ const styles = (theme) => ({
 	},
 	editor: {
 		display: 'flex',
-		flexDirection: 'column',
 		width: '100%',
 		marginRight: '-' + '35%',
+		flexDirection: 'column',
 		overflow: 'hidden' 
-	},
-    generalControls: {
-		padding: theme.spacing.unit,
-		backgroundColor: theme.palette.type === 'dark' ?
-			darken(theme.palette.background.paper, 0.05) :
-			lighten(theme.palette.background.paper, 0.05)
 	},
 	tracks: {
 		flex: 1,
@@ -107,6 +92,9 @@ const styles = (theme) => ({
 	},
 	drawerPaper: {
 		position: 'relative'
+	},
+	contentRightMargin: {
+		marginRight: 0
 	}
 });
 
@@ -129,16 +117,16 @@ const Def = class App extends React.Component {
 	playBlockClaim = Symbol()
 
 	state = {
-		activeDialog: '' // todo: need this from unistore so track components can use it
+		activeDialog: ''
 	}
 
-	handleDataToggle = () => {
+	handleHeaderToggle = () => {
 		this.props.setConfig({
 			showData: !this.props.config.showData
 		});
 	}
 
-	handleCreateTrack = type => {
+	handleAddTrack = type => {
 		this.props.createTrack(type);
 	}
 
@@ -146,7 +134,7 @@ const Def = class App extends React.Component {
 		this.props.releasePlayback(this.playBlockClaim);
 	}
 
-	closeDialog = () => {
+	closeModal = () => {
 		this.props.releasePlayback(this.playBlockClaim);
 		this.setState({
 			activeDialog: ''
@@ -183,7 +171,7 @@ const Def = class App extends React.Component {
 		const { activeDialog } = this.state;
 
 		const appHeader = <AppHeader
-			onDataToggle={this.handleDataToggle}
+			onDataToggle={this.handleHeaderToggle}
 			selectDataSource={this.selectDataSource}
 		/>;
 
@@ -191,31 +179,28 @@ const Def = class App extends React.Component {
 			<div className={classes.Compcontainer}>
 				<main className={classes.parent}>
 					<div className={classNames(classes.editor, {
-						[classes.contentShift]: showData
+						[classes.contentRightMargin]: showData
 					})}>
 						<div className={classes.tracks}>
 							{dataSource && <TrackList/>}
 							<AddPanelButton
 								className={classes.addTrackButton}
-								onClick={this.handleCreateTrack}
+								onClick={this.handleAddTrack}
 							/>
 						</div>
-						{dataSource && <MainSpeechControls
-							className={classes.generalControls}
-							selectDataSource={this.selectDataSource}
-						/>}
-						<VUMeter backgroundColor={this.props.theme.palette.background.paper}/>
+						<VUMeter backgroundColor='white'/>
 					</div>
 					<Drawer
 						variant="persistent"
-						anchor={'right'}
 						open={showData}
 						className={showData ? classes.drawerOpen : ''}
 						classes={{
-							docked: classes.drawerDocked,
+							docked: classes.drawerActive,
 							paper: classes.drawerPaper
 						}}
-					><DataTableView/></Drawer>
+					>
+						<DataTableView/>
+					</Drawer>
 				</main>
 				<Paper className={classes.playBar} square elevation={8}>
 					<PlayControls
@@ -226,19 +211,10 @@ const Def = class App extends React.Component {
 					/>
 				</Paper>
 			</div>
-			{activeDialog === 'audio' && <AudioSelectDialog
-				open={true}
-				onClose={this.closeDialog}
-				onSelect={id => this.handleUpdateTrack({
-					audioId: id
-				})}
-				disableBackdropClick={false}
-				waiting={false}
-			/>}
 			{(activeDialog === 'data' || !dataSource) && <DataSelectDialog
 				open={true}
 				cancelable={!!dataSource}
-				onClose={this.closeDialog}
+				onClose={this.closeModal}
 				defaultSelectedId={dataSourceId}
 				disableBackdropClick={false}
 				waiting={false}
@@ -246,14 +222,11 @@ const Def = class App extends React.Component {
 			{showTour && <Tour
 				run={!loading && showTour && !!dataSource}
 			/>}
-			<UpgradePrompt upgradeReady={upgradeReady}/>
 		</Shell>;
 	}
-
 };
 
 const App = withStyles(styles, { withTheme: true })(
 	connect(['dataSource', 'dataSourceId', 'loading', 'config'], actions)(Def)
 );
-
 export default App;

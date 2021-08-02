@@ -23,7 +23,6 @@ const styles = theme => ({
 });
 
 
-
 const Def = class AddTrackButton extends React.Component {
 	static propTypes = {
 		className: PropTypes.string,
