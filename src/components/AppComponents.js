@@ -1,5 +1,7 @@
 /*
 * Main App components handler class. Code adopted from the credited project.
+
+Clean this and and finish index.js. Then, code review for structure and file comparisons 
 */
 
 import React from 'react';
