@@ -138,8 +138,8 @@ const Def = class VUMeter extends React.Component {
 	}
 };
 
-const VUMeter = withStyles(styles)(
+const VolumeBar = withStyles(styles)(
 	connect(['paused'])(Def)
 );
 // const VUMeter = Def;
-export default VUMeter;
+export default VolumeBar;

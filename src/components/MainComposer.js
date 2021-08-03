@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Theme from './Theme';
-import AppLoader from './AppLoader';
-import AppLoadFailure from './AppLoadFailure';
+import Loader from './LoaderSuccess';
+import LoadFailure from './Loader';
 import asyncComponent from './AsyncHandler';
 import { loadSpecs } from './LoadDepsRequirements';
 
@@ -11,8 +11,8 @@ import { loadSpecs } from './LoadDepsRequirements';
 const StoreApp = asyncComponent(
 	() => loadSpecs().then(({StoreApp}) => StoreApp),
 	{
-		load: AppLoader,
-		fail: AppLoadFailure
+		load: Loader,
+		fail: LoadFailure
 	}
 );
 

@@ -26,5 +26,5 @@ Def.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-const SectionLoader = withStyles(styles)(Def);
-export default SectionLoader;
+const Loader = withStyles(styles)(Def);
+export default Loader;

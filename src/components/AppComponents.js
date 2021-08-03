@@ -13,6 +13,7 @@ import { lighten, darken } from '@material-ui/core/styles/colorManipulator';
 import Paper from '@material-ui/core/Paper';
 import Drawer from '@material-ui/core/Drawer';
 
+import VolumeBar from './VolumeBar'
 import Shell from './HeaderHandler';
 import AppHeader from './Header';//Tbc - loading screen displayed under loding condition
 import PlayControls from './MediaControls';
@@ -22,14 +23,16 @@ import SectionLoader from './../extensions/LoaderFunction';
 import LoadFailure from './Loader';
 import asyncComponent from './AsyncHandler';
 
-const TrackList = asyncComponent(() => import('./TrackList'), {
-	load: SectionLoader,
-	fail: LoadFailure
-});
-const DataTableView = asyncComponent(() => import('./DataTableView'), {
+
+const DataTableView = asyncComponent(() => import('./DataPanelComponent'), {
 	load: SectionLoader,
 	fail: LoadFailure,
 	defer: true
+});
+
+const TrackPanels = asyncComponent(() => import('./PanelsLoader'), {
+	load: SectionLoader,
+	fail: LoadFailure
 });
 
 const styles = (theme) => ({
@@ -182,14 +185,15 @@ const Def = class App extends React.Component {
 						[classes.contentRightMargin]: showData
 					})}>
 						<div className={classes.tracks}>
-							{dataSource && <TrackList/>}
+							{dataSource && <TrackPanels/>}
 							<AddPanelButton
 								className={classes.addTrackButton}
 								onClick={this.handleAddTrack}
 							/>
 						</div>
-						<VUMeter backgroundColor='white'/>
+						<VolumeBar backgroundColor='white'/>
 					</div>
+					{/* By defalt config of right is set for drawer*/}
 					<Drawer
 						variant="persistent"
 						open={showData}

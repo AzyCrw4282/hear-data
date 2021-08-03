@@ -25,7 +25,7 @@ const styles = theme => ({
 	}
 });
 
-const Def = class LoadFailure extends React.Component {
+const Def = class LoadError extends React.Component {
 	static propTypes = {
 		classes: PropTypes.object.isRequired,
 		retryHandler: PropTypes.func,
@@ -43,7 +43,7 @@ const Def = class LoadFailure extends React.Component {
 				<ErrorIcon className={classes.icon}/>
 				{isConnected ?
 					<div>
-						<Typography>Sever error - unable to load the app!</Typography>
+						<Typography>Server error - unable to load the app!</Typography>
 						<Button color="primary" onClick={this.onClick}>Retry</Button>
 					</div> :
 					<Typography>Cannot be loaded. Error with the server or connection issue.</Typography>
@@ -57,5 +57,5 @@ Def.propTypes = {
 	classes: PropTypes.object.isRequired
 };
 
-const LoadFailure = withStyles(styles)(Def);
-export default LoadFailure;
+const LoadError = withStyles(styles)(Def);
+export default LoadError;

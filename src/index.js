@@ -6,19 +6,19 @@ import reportError from './store/reportError'
 import Main from './components/MainComposer';
 import reportWebVitals from './reportWebVitals';
 
-console.log(`${APP_TITLE}. Test message printed.`);
+console.log(`${APP_TITLE}. Test message output.`);
 
 if (module.hot) {
 	const { AppContainer } = require('react-hot-loader');
 	render = () => {
-		ReactDOM.render(<AppContainer><Main  onError={reportError}/></AppContainer>, rootEl);
+		ReactDOM.render(<AppContainer><Main onError={reportError}/></AppContainer>, rootEl);
 	};
 
 	render();
 	module.hot.accept('./components/MainComposer', render);
 } else {
 	render = () => {
-		ReactDOM.render(<Main  onError={reportError}/>, rootEl);
+		ReactDOM.render(<Main onError={reportError}/>, rootEl);
 	};
 	render();
 }

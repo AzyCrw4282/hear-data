@@ -33,7 +33,7 @@ const specs = [
 const requirementsObj = {};
 let promise = null;
 
-async function load() {
+async function loadFunction() {
 
 	for (let i = 0; i < specs.length; i++) {
 		const {key, load} = specs[i]; //assigns the values of them here
@@ -44,7 +44,7 @@ async function load() {
 }
 function loadSpecs() {
 	if (!promise) {
-		promise = load();
+		promise = loadFunction();
 	}
 	return promise;
 }
