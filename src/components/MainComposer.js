@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Theme from './Theme';
 import Loader from './LoaderSuccess';
 import LoadFailure from './Loader';
-import asyncComponent from './AsyncHandler';
+import asyncComponent from './../extensions/AsyncHandler';
 import { loadSpecs } from './LoadDepsRequirements';
 
 //loads the requirements as apps using the StoreHandler module

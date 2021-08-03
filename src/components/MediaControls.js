@@ -2,21 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
-import formatData from '../util/formatData';
 import formatTime from '../util/formatTime';
 
-/*
-Material UI components
-*/
 import withStyles from '@material-ui/core/styles/withStyles';
 import Slider from './Slider';
-import Typography from '@material-ui/core/Typography';
 import Fab from '@material-ui/core/Fab';
 import Play from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
 import SkipPrevious from '@material-ui/icons/SkipPrevious';
-import NavigateBefore from '@material-ui/icons/NavigateBefore';
-import NavigateNext from '@material-ui/icons/NavigateNext';
 import IconButton from './IconButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -127,8 +120,7 @@ const Def = class PlayControls extends React.Component {
 			play,
 			setCurrentTime,
 			duration,
-			currentTime,
-			data
+			currentTime
 		} = this.props;
 
 		const roundedDuration = duration || 0;
@@ -183,10 +175,6 @@ const Def = class PlayControls extends React.Component {
 
 				<ExportAudioButton/>	
 			</div>
-			
-			{/* </div>
-			<div className={classes.main}> */}
-
 		</div>;
 	}
 };

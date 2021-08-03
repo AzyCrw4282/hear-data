@@ -51,13 +51,10 @@ const Def = class BarComponents extends React.Component {
 			children
 		} = this.props;
 
-
         
         <Typography variant="h4" color="inherit" className={classes.titleValue} component="h1">
             {this.props.title}
         </Typography>;
-
-
 
 		return <div className={classes.root}>
 			<AppBar position="static">

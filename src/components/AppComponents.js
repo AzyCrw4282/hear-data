@@ -21,7 +21,7 @@ import DataSelectDialog from './DataSourceSelector';
 import AddPanelButton from './AddPanelButton';
 import SectionLoader from './../extensions/LoaderFunction';
 import LoadFailure from './Loader';
-import asyncComponent from './AsyncHandler';
+import asyncComponent from './../extensions/AsyncHandler';
 
 
 const DataTableView = asyncComponent(() => import('./DataPanelComponent'), {
@@ -156,7 +156,6 @@ const Def = class App extends React.Component {
 			classes,
 			dataSource,
 			dataSourceId,
-			upgradeReady,
 			loading,
 			config
 		} = this.props;
@@ -178,6 +177,7 @@ const Def = class App extends React.Component {
 			selectDataSource={this.selectDataSource}
 		/>;
 
+		/* Controls the layering of the mechanism by the use of default rows of the flex */
 		return <Shell header={appHeader}>
 			<div className={classes.Compcontainer}>
 				<main className={classes.parent}>
@@ -193,7 +193,7 @@ const Def = class App extends React.Component {
 						</div>
 						<VolumeBar backgroundColor='white'/>
 					</div>
-					{/* By defalt config of right is set for drawer*/}
+					{/* By defalt config of left is set for drawer*/}
 					<Drawer
 						variant="persistent"
 						open={showData}
