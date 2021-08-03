@@ -25,9 +25,9 @@ const Def = class Main extends React.Component {
 
 	render() {
 		return <Theme>
-			
+
             <StoreApp {...this.props}/>
-		
+			
         </Theme>;
 	}
 };
