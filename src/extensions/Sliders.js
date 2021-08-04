@@ -74,10 +74,11 @@ function createSliderWithTooltip(Component) {
 			return (
 				<Tooltip
 					{...restTooltipProps}
+                    key={index}
 					title={title}
 					placement={placement}
 					open={!disabled && (this.state.visibles[index] || dragging)}
-					key={index}
+
 				>
 					<Handle
 						{...restProps}

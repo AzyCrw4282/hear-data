@@ -12,7 +12,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
-import Slider, { Range } from './Slider';
+import Slider from './../extensions/Sliders';
 import IconButton from './IconButton';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
@@ -127,7 +127,7 @@ const Def = class PanelMediaControls extends React.Component {
 		const scaleRangeOctaves = Math.max(1, Math.min(maxOctave - minOctave + 1, Math.floor(scaleRange / 7)));
 		const maxOctaveRange = 1 + maxOctave - minOctave;
 
-		return <div className={classes.root}>
+		return <div className={classes.root} data-tour-id="Additional-Selection">
             <FormControl className={classes.formControl}>
                 <InputLabel htmlFor="track-volume" shrink={true}>Volume</InputLabel>
                 <div className={classes.volumeControl}>
@@ -163,7 +163,7 @@ const Def = class PanelMediaControls extends React.Component {
             null}
 
 			<FormControl className={classes.keyControlGroup}>
-				<InputLabel htmlFor={'track-tempo-factor-' + track.id}>Tempo</InputLabel>
+				<InputLabel htmlFor={'track-tempo-factor-' + track.id} >Tempo</InputLabel>
 				<Select
 					value={tempoFactor}
 					onChange={this.handleSoundFilter}

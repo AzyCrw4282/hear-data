@@ -5,7 +5,7 @@ import { actions } from '../store';
 import formatTime from '../util/formatTime';
 
 import withStyles from '@material-ui/core/styles/withStyles';
-import Slider from './Slider';
+import Slider from './../extensions/Sliders';
 import Fab from '@material-ui/core/Fab';
 import Play from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';

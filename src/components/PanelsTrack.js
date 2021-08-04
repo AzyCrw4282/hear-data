@@ -114,12 +114,13 @@ const Def = class UpperPanelControls extends React.Component {
 							}
 						</WideSelect>
 					</FormControl>
-					<FormControl className={classes.container}>
+					<FormControl className={classes.container} data-tour-id="Instrument-Selection">
 						<WideSelect
 							name="Instrument"
 							id={'track-instrument-' + track.id}
 							value={instrument}          
 							label="Instrument"
+							
 							onChange={this.handleInstrumentChangeEvt}
 							inputProps={{
 								name: 'instrument'

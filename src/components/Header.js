@@ -101,15 +101,15 @@ const Def = class AppHeader extends React.Component {
 		const logo = <img src={hearDataIcon} alt="Data Icon logo" className={classes.logo}/>;
 
 		return <React.Fragment>
-				<IconButton onClick={onDataToggle} label="Click to view data" color="inherit">
+				<IconButton onClick={onDataToggle} label="Click to view data" color="inherit" data-tour-id="data-display-panel">
 					<SpreadsheetIcon/>
 				</IconButton>				
 				<span className={classes.resetButton}>
-				<IconButton label="Reset Project" color="inherit" onClick={this.processResetAction}>
+				<IconButton label="Reset Project" color="inherit" onClick={this.processResetAction} data-tour-id="reset-project-button">
 					<DeleteIcon/>
 				</IconButton>
 				</span>
-				<IconButton onClick={this.helpButton} label="Click to see help" color="inherit">
+				<IconButton onClick={this.helpButton} label="Click to see help" color="inherit" data-tour-id="show-tour-button">
 					<HelpIcon/>
 				</IconButton>
 		
@@ -122,7 +122,7 @@ const Def = class AppHeader extends React.Component {
 						<span className={classes.titleText} onClick={selectDataSource}>
 							{dataSource.metadata.title}
 						</span>
-						<IconButton label="Select Data Source" color="inherit" onClick={selectDataSource} data-tour-id="upload-data">
+						<IconButton label="Select Data Source" color="inherit" onClick={selectDataSource} data-tour-id="upload-data-source">
 							<EditIcon/>
 						</IconButton>
 					</React.Fragment> : null

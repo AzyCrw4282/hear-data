@@ -72,7 +72,7 @@ const Def = class AddTrackButton extends React.Component {
 				className={''}
 				icon={<SpeedDialIcon openIcon={<AddIcon />} />}
 				ButtonProps={{
-					'data-tour-id': 'add-track'
+					'data-tour-id': 'add-panel'
 				}}
 				direction="up"
 				onClose={this.handleOnClose}

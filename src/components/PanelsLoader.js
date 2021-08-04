@@ -86,8 +86,6 @@ const Def = class PanelsList extends React.Component {
 				const node = this.trackRefs.get(newTrackId);
 				if (node) {
 					try {
-						// block: 'nearest' throws error in some older browsers
-						// e.g. Firefox < 58
 						node.scrollIntoView({
 							behavior: 'smooth',
 							block: 'nearest'
