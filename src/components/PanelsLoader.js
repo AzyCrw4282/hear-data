@@ -12,7 +12,7 @@ Material UI components
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import Track from './Track';
+import Panel from './Panel';
 
 const styles = theme => ({
 	root: {
@@ -33,7 +33,7 @@ const styles = theme => ({
 	}
 });
 
-const SortableTrack = sortableElement(props => <Track {...props}/>);
+const SortableTrack = sortableElement(props => <Panel {...props}/>);
 
 const SortableTrackList = sortableContainer((props) => {
 	const {items, nodeRef} = props;
