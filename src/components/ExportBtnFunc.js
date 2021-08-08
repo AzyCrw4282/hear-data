@@ -5,9 +5,9 @@ import { actions } from '../store';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Button from '@material-ui/core/Button';
 import DownloadIcon from '@material-ui/icons/SaveAlt';
-import asyncComponent from './asyncComponent';
+import asyncComponent from '../extensions/AsyncHandler';
 
-const ExportAudioDialog = asyncComponent(() => import('./ExportAudioDialog'), {
+const ExportAudioDialog = asyncComponent(() => import('./ExportAudioModal'), {
 	defer: true
 });
 

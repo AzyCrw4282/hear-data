@@ -45,21 +45,9 @@ const styles = () => ({
 
 const sampleRate = 44100;
 const KBDivider = 1000;
-const MBDivider = 1000000;
-const bitValues = [128,320];
 
 const KBFormat = new Intl.NumberFormat(navigator.language, {maximumFractionDigits: 0});
 const MBFormat = new Intl.NumberFormat(navigator.language, {maximumFractionDigits: 0,});
-
-function calcFileSize(bytes){
-    if (bytes > 1e6){
-        return MBFormat.format(bytes/(KBDivider * KBDivider))+'MegaBytes';
-    } else if (bytes >  1000 && bytes < 1e6){
-        return KBFormat.format(bytes/KBDivider)+'KiloBytes';       
-    } else {
-		return kbFormat.format(bytes) + 'Bytes';
-    }
-}
 
 const Def = class ExportModal extends React.Component {
 	static propTypes = {

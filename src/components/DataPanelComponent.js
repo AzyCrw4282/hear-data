@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'unistore/react';
 
-import TablePanel from './DataPanel';
+import TablePanel from './DataPanelSelector';
 
 const Def = props => props.data && <TablePanel {...props} />;
 

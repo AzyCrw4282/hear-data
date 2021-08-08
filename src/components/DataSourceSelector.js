@@ -7,8 +7,7 @@ import React from 'react';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
 import { createConfirmation } from 'react-confirm';
-import { sampleIdRegex } from '../util/regex';
-import isMobile from 'ismobilejs';
+
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -16,19 +15,20 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import WelcomeDialog from './WelcomeDialog';
-import AssetSelectDialog from './AssetSelectDialog';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import Typography from '@material-ui/core/Typography';
 import InfoIcon from '@material-ui/icons/Info';
-import ConfirmationDialog from './ConfirmationDialog';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+
 import * as dataLibrary from '../extensions/dataLibrary';
 import parseSpreadSheet from '../util/data';
-
+import { sampleIdRegex } from '../util/regex';
+import ConfirmModal from './ConfirmationModal';
+import WelcomeDialog from './WelcomeModal';
+import AssetSelectDialog from './AssetSelectHandler';
 
 const styles = theme => ({
 	table: {

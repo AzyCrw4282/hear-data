@@ -4,17 +4,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
 import { createConfirmation } from 'react-confirm';
-import logEvent from '../util/analytics';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
-import IconButton from './IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import HelpIcon from '@material-ui/icons/Help';
 import DeleteIcon from '@material-ui/icons/DeleteForever';
 import SpreadsheetIcon from '@material-ui/icons/List';
-import ConfirmModal from './ConfirmationModal';
 
+import IconButton from '../extensions/IconButton';
+import ConfirmModal from './ConfirmationModal';
 import hearDataIcon from '../images/hearDataIcon.jpg';
 
 const confirm = createConfirmation(ConfirmModal);

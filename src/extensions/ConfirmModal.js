@@ -6,7 +6,7 @@ Material UI components
 */
 import PropTypes from 'prop-types';
 // import withStyles from '@material-ui/core/styles/withStyles';
-import Theme from './Theme';
+import Theme from '../components/InterfaceTheme';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';

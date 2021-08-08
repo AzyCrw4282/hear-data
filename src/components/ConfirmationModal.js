@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { confirmable } from 'react-confirm';
 import PropTypes from 'prop-types';
-import Theme from './Theme';
+import Theme from './InterfaceTheme';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';

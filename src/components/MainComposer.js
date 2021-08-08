@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Theme from './Theme';
+import Theme from './InterfaceTheme';
 import Loader from './LoaderSuccess';
 import LoadFailure from './Loader';
 import asyncComponent from './../extensions/AsyncHandler';
