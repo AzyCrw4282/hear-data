@@ -3,19 +3,21 @@
 import React from 'react';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
-import num from '../util/num';
-import { instruments as samplerInstruments } from '../engine/types/scale/samplerInstruments';
-import synthInstruments from '../engine/types/scale/synthInstruments';
+
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
-import Slider from './../extensions/Sliders';
-import IconButton from './IconButton';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
+
+import Slider from './../extensions/Sliders';
+import IconButton from '../extensions/IconButton';
+import num from '../extensions/num';
+import { instruments as samplerInstruments } from '../engine/types/scale/samplerInstruments';
+import synthInstruments from '../engine/types/scale/synthInstruments';
 
 
 export const DEFAULT_INSTRUMENT = 'piano';

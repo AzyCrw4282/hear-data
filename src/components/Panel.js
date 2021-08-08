@@ -9,14 +9,9 @@ import { createConfirmation } from 'react-confirm';
 import { SortableHandle as sortableHandle } from 'react-sortable-hoc';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { lighten, darken } from '@material-ui/core/styles/colorManipulator';
-
-/*
-Material UI components
-*/
 import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
-import ConfirmationDialog from '../extensions/ConfirmModal';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import DraggableIcon from '@material-ui/icons/DragIndicator';
@@ -24,8 +19,10 @@ import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import ConfirmationDialog from '../extensions/ConfirmModal';
 import trackTypes from './PanelHandlers';
-import IconButton from '../store/IconButton';
+import IconButton from '../extensions/IconButton';
 import BarChartPanel from './PanelChartHandler';
 import PanelControls from './PanelControls';
 

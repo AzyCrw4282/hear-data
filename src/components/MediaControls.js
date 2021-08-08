@@ -2,19 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
-import formatTime from '../util/formatTime';
-
 import withStyles from '@material-ui/core/styles/withStyles';
-import Slider from './../extensions/Sliders';
 import Fab from '@material-ui/core/Fab';
 import Play from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
 import SkipPrevious from '@material-ui/icons/SkipPrevious';
-import IconButton from './IconButton';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import Slider from './../extensions/Sliders';
 import ExportAudioButton from './ExportBtnFunc';
-import DurationControl from './DurationControl';
+// import DurationControl from './DurationControl';
+import IconButton from '../extensions/IconButton';
+import formatTime from '../util/formatTime';
 
 const styles = theme => ({
 	root: {
@@ -171,7 +170,7 @@ const Def = class PlayControls extends React.Component {
 					<IconButton disabled={disabled} className={classes.rewind} label="Reset" onClick={this.rewindBeginning}>
 						<SkipPrevious />
 					</IconButton>
-					<DurationControl/>
+					{/* <DurationControl/> */}
 
 				<ExportAudioButton/>	
 			</div>

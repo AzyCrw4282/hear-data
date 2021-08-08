@@ -3,7 +3,7 @@ import React from 'react';
 import Joyride, { ACTIONS, EVENTS } from 'react-joyride';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
-import logEvent from '../util/analytics';
+
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 
@@ -102,7 +102,6 @@ const Def = class Tour extends React.Component {
 	handleJoyrideCallback = tour => {
 		const { action, index, type } = tour;
 		if (type === EVENTS.TOUR_END || action === EVENTS.TOOLTIP_CLOSE || type === EVENTS.STEP_AFTER && index >= lastStep) {
-			logEvent('tour', index >= lastStep ? 'complete' : 'skip', index);
 			this.setState({
 				stepIndex: 0,
 				run: false
@@ -200,3 +199,8 @@ const Def = class Tour extends React.Component {
 		/>;
 	}
 };
+
+const Tour = withStyles(styles, { withTheme: true })(
+	connect(['config'], actions)(Def)
+);
+export default Tour;

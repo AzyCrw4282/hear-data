@@ -14,18 +14,6 @@ Material UI components
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import FormControl from '@material-ui/core/FormControl';
-import Checkbox from '@material-ui/core/Checkbox';
-import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import Slider, { Range } from './Slider';
-import IconButton from './IconButton';
-import VolumeUpIcon from '@material-ui/icons/VolumeUp';
-import VolumeOffIcon from '@material-ui/icons/VolumeOff';
-
 import trackTypes from './util/trackTypes';
 
 const styles = theme => ({
@@ -61,11 +49,6 @@ const styles = theme => ({
 		display: 'inline-block'
 	}
 });
-
-
-function rcSliderStepHack(val) {
-	return Math.round(val * 10e18) / 10e18;
-}
 
 const Def = class PanelControls extends React.Component {
 	static propTypes = {
@@ -153,7 +136,7 @@ const Def = class PanelControls extends React.Component {
 		const filterRange = filterMax - filterMin;
 		const filterStep = filterField && (filterField.step || 0) * filterField.scale;
 
-		// todo: support non-numeric fields
+		// todo: support non-numeric fields? And any improvements to this?
 		const fields = !data || !data.fields ?
 			[] :
 			data.fields

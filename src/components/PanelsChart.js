@@ -7,8 +7,8 @@ e.g.-> Barchart -> TrackBarChart -> Track
 */
 import React from 'react';
 import PropTypes from 'prop-types';
-import CanvasEnhancer from './../extensions/CanvasEnhancer';
-import RemountOnResize from './RemountOnResize';
+import CanvasEnhancer from './../extensions/CanvasHandler';
+import RemountOnResize from '../store/RemountOnResize';
 
 
 const defaultColors = {

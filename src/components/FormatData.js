@@ -1,4 +1,4 @@
-function formatData(field) {
+export default function formatData(field) {
 	if (!field) {
 		return identity;
 	}
