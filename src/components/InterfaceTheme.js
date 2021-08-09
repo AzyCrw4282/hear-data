@@ -1,8 +1,7 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Orange from '@material-ui/core/colors/Orange';
+import orange from '@material-ui/core/colors/orange';
 
 const globalTheme = createMuiTheme({
 
@@ -20,7 +19,7 @@ const globalTheme = createMuiTheme({
 			light: '#ffad42',
 			contrastText: '#000'
 		},
-		error: Orange
+		error: orange
 	}
 });
 

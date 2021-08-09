@@ -8,7 +8,7 @@ import {
 	loadSamples
 } from './samplerInstruments';
 import synthInstruments from './synthInstruments';
-import num from '../../../util/num';
+import num from '../../../extensions/num';
 import {
 	DEFAULT_SCALE_RANGE,
 	DEFAULT_START_OCTAVE,

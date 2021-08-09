@@ -1,6 +1,6 @@
 import React from 'react';
 import Loader from './../extensions/LoaderFunction';
-import Shell from './Shell';
+import Shell from './HeaderHandler';
 
 
 const Def = () =>

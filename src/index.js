@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportError from './store/reportError'
 import Main from './components/MainComposer';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 
 console.log(`${APP_TITLE}. Test message output.`);
 

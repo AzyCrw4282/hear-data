@@ -4,9 +4,9 @@ import allOff from 'event-emitter/all-off';
 
 import SoundQ from 'soundq/src/index';
 import destination from 'soundq/src/patches/destination';
-import num from '../util/num';
+import num from '../extensions/num';
 import trackTypes from './types';
-import getSpeechBuffer from './speech';
+// import getSpeechBuffer from './speech';
 import bufferSource from 'soundq/src/sources/buffer';
 import debounce from 'debounce';
 
@@ -218,26 +218,26 @@ function AudioDataEngine(context, options = {}) {
 		me.emit('pause');
 	}
 
-	const loadSpeechBufferNow = () => {
-		const title = speechTitle;
-		if (SPEECH_API_KEY && speechTitle && !speechBuffer) {
-			getSpeechBuffer(speechTitle, this.speechVoiceId).then(buffer => {
-				if (title === speechTitle && speechBuffer !== buffer) {
-					if (speechShot) {
-						speechShot.destroy();
-						speechShot = null;
-					}
-					speechBuffer = buffer;
-					speechShot = soundQ.shot(bufferSource(buffer));
-					needNewPlayTiming = true;
-					baselineIntroProgress = 0;
-					this.update();
-				}
-			});
-		}
-	};
+	// const loadSpeechBufferNow = () => {
+	// 	const title = speechTitle;
+	// 	if (SPEECH_API_KEY && speechTitle && !speechBuffer) {
+	// 		getSpeechBuffer(speechTitle, this.speechVoiceId).then(buffer => {
+	// 			if (title === speechTitle && speechBuffer !== buffer) {
+	// 				if (speechShot) {
+	// 					speechShot.destroy();
+	// 					speechShot = null;
+	// 				}
+	// 				speechBuffer = buffer;
+	// 				speechShot = soundQ.shot(bufferSource(buffer));
+	// 				needNewPlayTiming = true;
+	// 				baselineIntroProgress = 0;
+	// 				this.update();
+	// 			}
+	// 		});
+	// 	}
+	// };
 
-	const loadSpeechBuffer = debounce(loadSpeechBufferNow, 600);
+	// const loadSpeechBuffer = debounce(loadSpeechBufferNow, 600);
 
 	eventEmitter(this);
 
@@ -398,9 +398,9 @@ function AudioDataEngine(context, options = {}) {
 
 		if (speechTitle && !speechBuffer) {
 			if (wantToPlay) {
-				loadSpeechBufferNow();
+				// loadSpeechBufferNow();
 			} else {
-				loadSpeechBuffer();
+				// loadSpeechBuffer();
 			}
 		}
 
