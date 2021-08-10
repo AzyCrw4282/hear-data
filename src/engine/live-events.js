@@ -2,7 +2,7 @@
 import liveEngine from './live';
 import { store, actions } from '../store';
 import { mapActions } from 'unistore/src/util';
-import getVoices, { getSpeechVoice } from '../engine/speech-voices';
+// import getVoices, { getSpeechVoice } from '../engine/speech-voices';
 import normalizeSpaces from '../util/normalizeSpaces';
 
 const changeProperties = [
@@ -34,18 +34,18 @@ store.subscribe(state => {
 
 	const speechText = normalizeSpaces(state.speechTitleEnabled && state.speechTitle);
 
-	liveEngine.speechTitle = speechText;
-	if (SPEECH_API_KEY && speechText) {
-		if (voicesByLanguage) {
-			liveEngine.speechVoiceId = getSpeechVoice(state);
-		} else {
-			getVoices().then(voices => {
-				voicesByLanguage = voices.voicesByLanguage;
-				liveEngine.speechVoiceId = getSpeechVoice(state);
-				liveEngine.update();
-			});
-		}
-	}
+	// liveEngine.speechTitle = speechText;
+	// if (!SPEECH_API_KEY && speechText) {
+	// 	if (voicesByLanguage) {
+	// 		liveEngine.speechVoiceId = getSpeechVoice(state);
+	// 	} else {
+	// 		getVoices().then(voices => {
+	// 			voicesByLanguage = voices.voicesByLanguage;
+	// 			liveEngine.speechVoiceId = getSpeechVoice(state);
+	// 			liveEngine.update();
+	// 		});
+	// 	}
+	// }
 
 	liveEngine.update();
 });

@@ -3,8 +3,8 @@ import Dropzone from 'react-dropzone';
 import { fileAccepted } from 'react-dropzone/dist/es/utils';
 import isMobile from 'ismobilejs';
 import classNames from 'classnames';
-import reportError from '../util/reportError';
-import { logMetricsEvent } from '../util/analytics';
+// import reportError from '../util/reportError';
+// import { logMetricsEvent } from '../util/analytics';
 import { fileExt as extRegex } from '../util/regex';
 
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -192,7 +192,7 @@ const Def = class AssetSelectDialog extends React.Component {
 					'No data found in file.' :
 					'Error reading file.';
 				errorMessage = `${errorText} (${file.name})`;
-				reportError(e);
+				// reportError(e);
 			}
 		}
 
@@ -202,10 +202,10 @@ const Def = class AssetSelectDialog extends React.Component {
 				const match = extRegex.exec(file.fileName || '');
 				importFileType = match && match[1] || 'unknown';
 			}
-			logMetricsEvent('import', this.props.type || 'file', {
-				importFileSize: file.size,
-				importFileType
-			});
+			// logMetricsEvent('import', this.props.type || 'file', {
+			// 	importFileSize: file.size,
+			// 	importFileType
+			// });
 		});
 
 		if (!errorMessage && this.props.onUpload && assets.length) {

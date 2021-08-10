@@ -59,7 +59,7 @@ const Def = class BarComponents extends React.Component {
 		return <div className={classes.root}>
 			<AppBar position="static">
 				<Toolbar className={classes.header}>
-					{title}
+					{this.props.title}
 					{header}
 				</Toolbar>
 			</AppBar>

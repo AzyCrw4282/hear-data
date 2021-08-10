@@ -1,6 +1,6 @@
 import AudioDataEngine from './AudioDataEngine';
-import { requirements } from '../components/LoadDepsRequirements';
-const { AudioContext } = requirements.AudioContext;
+import { requirementsObj } from '../components/LoadDepsRequirements';
+const { AudioContext } = requirementsObj.AudioContext;
 
 
 const context = new AudioContext();

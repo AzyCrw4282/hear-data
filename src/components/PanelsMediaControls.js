@@ -3,6 +3,10 @@
 import React from 'react';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
+import {
+	DEFAULT_SCALE_RANGE,
+	DEFAULT_INSTRUMENT
+} from '../constants';
 
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -19,8 +23,6 @@ import num from '../extensions/num';
 import { instruments as samplerInstruments } from '../engine/types/scale/samplerInstruments';
 import synthInstruments from '../engine/types/scale/synthInstruments';
 
-
-export const DEFAULT_INSTRUMENT = 'piano';
 const instruments = {
 	...samplerInstruments,
 	...synthInstruments
@@ -65,7 +67,7 @@ const octavesConstructorMenu = range => Array.from(Array(range), (n, i) => {
 const Def = class PanelMediaControls extends React.Component {
 	static propTypes = {
 		classes: PropTypes.object.isRequired,
-		prevTrack: PropTypes.object.isRequired,
+		track: PropTypes.object.isRequired,
 		data: PropTypes.object,
 		setTrack: PropTypes.func.isRequired
 	}
@@ -102,7 +104,7 @@ const Def = class PanelMediaControls extends React.Component {
 
 	handleSoundFilter = event => {
 		const { setTrack } = this.props;
-		const oldTrack = this.props.prevTrack || {};
+		const oldTrack = this.props.track || {};
 		const { name, value } = event.target;
 		const track = this.modifiedTrackConfig(oldTrack, name, value);
 		setTrack(track, track.id);
@@ -110,8 +112,8 @@ const Def = class PanelMediaControls extends React.Component {
 
 	//error here. Tbs..
 	handleToggleVolume = () => {
-		const { prevTrack, setTrack } = this.props;
-		setTrack(Object.assign({}, prevTrack, {
+		const { track, setTrack } = this.props;
+		setTrack(Object.assign({}, track, {
 			muted: !track.muted
 		}), track.id);
 	}
@@ -119,10 +121,10 @@ const Def = class PanelMediaControls extends React.Component {
 	render() {
 		const {
 			classes,
-			prevTrack
+			track
 		} = this.props;
 
-		const config = prevTrack.config && prevTrack.config.scale || {};
+		const config = track.config && track.config.scale || {};
 		const scaleRange = num(config.scaleRange, DEFAULT_SCALE_RANGE);
 		const tempoFactor = num(config.tempoFactor, 1);
 		const { minOctave, maxOctave } = instruments[config.instrument] || instruments[DEFAULT_INSTRUMENT];

@@ -1,12 +1,12 @@
 /*
-Library code that enables 
+Library code that enables panel control
 */
 import React from 'react';
 // import classNames from 'classnames';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
-import num from '../util/num';
-import formatData from '../util/formatData';
+import num from '../extensions/num';
+import formatData from './FormatData';
 
 /*
 Material UI components
@@ -14,7 +14,7 @@ Material UI components
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import trackTypes from './util/trackTypes';
+import trackTypes from './PanelHandlers';
 
 const styles = theme => ({
 	controlsCategory: {

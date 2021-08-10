@@ -4,12 +4,12 @@ import encodeWav from './encoders/wav';
 import encodeMp3 from './encoders/mp3';
 import eventEmitter from 'event-emitter';
 import allOff from 'event-emitter/all-off';
-import { requirements } from '../util/loadRequirements';
+import { requirementsObj } from '../components/LoadDepsRequirements';
 import normalizeSpaces from '../util/normalizeSpaces';
-import getVoices, { getSpeechVoice } from '../engine/speech-voices';
-import { logExportEvent } from '../util/analytics';
+// import getVoices, { getSpeechVoice } from '../engine/speech-voices';
+// import { logExportEvent } from '../util/analytics';
 
-import logoIcon from '../images/two-tone-logo-32.png';
+import logoIcon from '../images/hearDataIcon32x32.jpg';
 
 const RENDER_PROGRESS_RATIO = 0.4;
 
@@ -26,7 +26,7 @@ const fetchIcon = () =>
 MS Edge doesn't support options object in constructor
 */
 function createOfflineContext(options) {
-	const { OfflineAudioContext } = requirements.AudioContext;
+	const { OfflineAudioContext } = requirementsObj.AudioContext;
 	try {
 		const context = new OfflineAudioContext(options);
 		return context;
@@ -62,12 +62,12 @@ export default function ExportEngine(state, options = {}) {
 	let abortController = null;
 
 	function log(action) {
-		logExportEvent({
-			sampleRate,
-			exportFormat: format,
-			bitRate,
-			duration: Math.round(state.duration * 1000)
-		}, action);
+		// logExportEvent({
+		// 	sampleRate,
+		// 	exportFormat: format,
+		// 	bitRate,
+		// 	duration: Math.round(state.duration * 1000)
+		// }, action);
 	}
 
 	this.start = async () => {
@@ -93,10 +93,10 @@ export default function ExportEngine(state, options = {}) {
 		engine.rowDuration = state.rowDuration;
 		engine.speechTitleEnabled = state.speechTitleEnabled;
 		engine.speechTitle = normalizeSpaces(state.speechTitleEnabled && state.speechTitle);
-		if (SPEECH_API_KEY && engine.speechTitle) {
-			await getVoices();
-			engine.speechVoiceId = getSpeechVoice(state);
-		}
+		// if (SPEECH_API_KEY && engine.speechTitle) {
+		// 	await getVoices();
+		// 	engine.speechVoiceId = getSpeechVoice(state);
+		// }
 		engine.update();
 
 		engine.on('timeupdate', () => {

@@ -13,7 +13,7 @@ import Slider from './../extensions/Sliders';
 import ExportAudioButton from './ExportBtnFunc';
 // import DurationControl from './DurationControl';
 import IconButton from '../extensions/IconButton';
-import formatTime from '../util/formatTime';
+import formatTime from './FormatTime';
 
 const styles = theme => ({
 	root: {

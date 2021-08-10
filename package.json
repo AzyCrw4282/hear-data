@@ -1,11 +1,16 @@
 {
 		"name": "hear-data",
 		"version": "0.1.0",
-		"private": true,
 		"description": "Hear-data is a project on listening to data",
 		"author": {
 				"name": "Azky Mubarack"
 		},
+		"contributors": [
+			{
+				"name": "Brian",
+				"url": "https://github.com/brianchirls"
+			}
+		],
 		"main": "index.js",
 		"scripts": {
 				"lint": "eslint ./; true",

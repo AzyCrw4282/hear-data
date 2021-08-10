@@ -11,6 +11,9 @@ const tourStepDefaults = {
 	disableBeacon: true
 };
 
+const styles = () => ({
+});
+
 const tourContents = [
 	{
 		title: 'Select Data Source',

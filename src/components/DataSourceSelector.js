@@ -23,7 +23,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import * as dataLibrary from '../extensions/dataLibrary';
+import * as dataLibrary from '../assets/dataLibrary';
 import parseSpreadSheet from '../util/data';
 import { sampleIdRegex } from '../util/regex';
 import ConfirmModal from './ConfirmationModal';
@@ -70,7 +70,7 @@ const styles = theme => ({
 	}
 });
 
-const confirmDialog = createConfirmation(ConfirmationDialog);
+const confirmDialog = createConfirmation(ConfirmModal);
 const allowedFormats = [
     'text/csv',
     '.txt',
@@ -164,9 +164,9 @@ const Def = class DataSourceSelector extends React.Component {
 	setDataSourceId = id => {
 		const matchSample = sampleIdRegex.exec(id);
 		if (matchSample) {
-			logEvent('datasource', 'sample', matchSample[1] || '');
+			console.log('datasource', 'sample', matchSample[1] || '');
 		} else {
-			logEvent('datasource', 'upload', id);
+			console.log('datasource', 'upload', id);
 		}
 		this.props.setDataSourceId(id);
 	}

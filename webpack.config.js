@@ -37,7 +37,7 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 // configuration
 const title = 'Hear-data';
-const websiteURL = 'https://NA.com'; //TBC
+const websiteURL = 'https://heardata.com'; //TBC
 const description = 'Hear Data';
 const eslintConfig = require('./.eslintrc.js');
 const port = '9000';
@@ -100,7 +100,10 @@ const VERSION = (() => {
 
 const plugins = [
 	new CaseSensitivePathsPlugin(),
-	new CleanWebpackPlugin()
+	new CleanWebpackPlugin(),
+	new HtmlWebpackPlugin({
+        hash: true
+    })
 ];
 
 const config = {
@@ -403,12 +406,12 @@ const distConfig = {
 			SPEECH_API_KEY: JSON.stringify(process.env.SPEECH_API_KEY)
 		}),
 		new FaviconsWebpackPlugin({
-			logo: resolveApp('./src/images/two-tone-logo.svg'),
+			logo: resolveApp('./src/images/heatDataIcon.jpg'),
 			background: '#303030',
 			persistentCache: true,
 			version: VERSION,
 			// inject: true,
-			title: 'TwoTone',
+			title: 'HearData',
 			appDescription: description
 		}),
 		new ImageminPlugin({

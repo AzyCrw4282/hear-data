@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MenuItem from '@material-ui/core/MenuItem';
 import WideSelect from '../extensions/WideSelect';
+import FormControl from '@material-ui/core/FormControl';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
 import num from '../extensions/num';

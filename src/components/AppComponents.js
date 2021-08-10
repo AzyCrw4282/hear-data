@@ -21,6 +21,8 @@ import DataSelectDialog from './DataSourceSelector';
 import AddPanelButton from './AddPanelButton';
 import SectionLoader from './../extensions/LoaderFunction';
 import LoadFailure from './Loader';
+import Loader from './LoaderSuccess';
+
 import asyncComponent from './../extensions/AsyncHandler';
 
 
@@ -34,6 +36,9 @@ const TrackPanels = asyncComponent(() => import('./PanelsLoader'), {
 	load: SectionLoader,
 	fail: LoadFailure
 });
+
+const AppTour = asyncComponent(() => import('./WebTutorial'));
+
 
 const styles = (theme) => ({
 	parent: {
@@ -161,7 +166,7 @@ const Def = class App extends React.Component {
 		} = this.props;
 
 		if (loading) {
-			return <AppLoader/>;
+			return <Loader/>;
 		}
 
 		const {
@@ -223,7 +228,7 @@ const Def = class App extends React.Component {
 				disableBackdropClick={false}
 				waiting={false}
 			/>}
-			{showTour && <Tour
+			{showTour && <AppTour
 				run={!loading && showTour && !!dataSource}
 			/>}
 		</Shell>;

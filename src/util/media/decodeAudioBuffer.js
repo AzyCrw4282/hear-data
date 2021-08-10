@@ -1,4 +1,4 @@
-import { requirements } from '../loadRequirements';
+import { requirementsObj } from '../../components/LoadDepsRequirements';
 
 const CONTEXT_TIME = 10; // milliseconds
 
@@ -23,7 +23,7 @@ function cleanUp() {
 }
 
 export default function decodeAudioBuffer(buffer) {
-	const { AudioContext } = requirements.AudioContext;
+	const { AudioContext } = requirementsObj.AudioContext;
 
 	if (!context) {
 		context = new AudioContext();

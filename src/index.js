@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportError from './store/reportError'
 import Main from './components/MainComposer';
 // import reportWebVitals from './reportWebVitals';
 
 console.log(`${APP_TITLE}. Test message output.`);
+const rootEl = document.getElementById('root'); //root element Definition
+
+let render = () => {};
 
 if (module.hot) {
 	const { AppContainer } = require('react-hot-loader');
@@ -20,6 +22,7 @@ if (module.hot) {
 	render = () => {
 		ReactDOM.render(<Main onError={reportError}/>, rootEl);
 	};
+	console.log("Error loading the App. ")
 	render();
 }
 
