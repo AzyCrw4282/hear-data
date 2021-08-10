@@ -8,15 +8,15 @@ const globalTheme = createMuiTheme({
 	palette: {
 		type: 'light',
 		primary: {
-            main: '#26c6da', // Cyan[400]
-			dark: '#0095a8',
 			light: '#6ff9ff',
+			main: '#26daa8', // Cyan[400]
+			dark: '#0095a8',
 			contrastText: '#000'
 		},
 		secondary: {
-            main: '#f57c00', // Orange[700]
-			dark: '#bb4d00',
 			light: '#ffad42',
+			main: '#7B7D7D', 
+			dark: '#bb4d00',
 			contrastText: '#000'
 		},
 		error: orange
