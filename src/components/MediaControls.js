@@ -146,7 +146,7 @@ const Def = class PlayControls extends React.Component {
 			</div>
 			<div className={classes.playPauseButton} data-tour-id="play-button">
 				{ !loading || audioLoaded ?
-					!paused || !disabled ?
+					!paused || disabled ?
 						<IconButton
 							component={Fab}
 							color="transparent"
@@ -154,7 +154,8 @@ const Def = class PlayControls extends React.Component {
 							onClick={pause}
 						>
 						<Pause />
-						</IconButton> :
+						</IconButton> 
+					:
                         <IconButton
                         component={Fab}
                         color="primary"
@@ -163,7 +164,8 @@ const Def = class PlayControls extends React.Component {
                         onClick={play}
                         >
                         <Play />
-                        </IconButton> :
+                        </IconButton> 
+				:
 					<CircularProgress size={100}  classes={{colorPrimary: classes.loading}}/>
 				}
 

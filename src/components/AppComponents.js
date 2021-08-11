@@ -201,10 +201,11 @@ const Def = class App extends React.Component {
 					{/* By defalt config of left is set for drawer*/}
 					<Drawer
 						variant="persistent"
+						anchor = {'right'}
 						open={showData}
-						className={showData ? classes.drawerOpen : ''}
+						className={showData ? classes.drawerActive : ''}
 						classes={{
-							docked: classes.drawerActive,
+							docked: classes.drawerDocked,
 							paper: classes.drawerPaper
 						}}
 					>

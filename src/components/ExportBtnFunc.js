@@ -26,11 +26,11 @@ const Def = class ExportAudioBtn extends React.Component {
 	static propTypes = {
 		className: PropTypes.string,
 		classes: PropTypes.object,
-        audioSetState: PropTypes.bool,
-        loadingState: PropTypes.bool,
-		disabledState: PropTypes.bool,
-		audioLoadedState: PropTypes.bool,
+		loading: PropTypes.bool,
+		disabled: PropTypes.bool,
+		audioLoaded: PropTypes.bool
 	}
+
 
 	state = {
 		open: false
@@ -51,24 +51,24 @@ const Def = class ExportAudioBtn extends React.Component {
 	render() {
 		const {
 			classes,
-			disabledState,
-			loadingState,
-			audioLoadedState
+			disabled,
+			loading,
+			audioLoaded
 		} = this.props;
 
 		const { open } = this.state;
 
 		return <React.Fragment>
 			<Button
-				disabled={disabledState || loadingState || !audioLoadedState}
-				color="Primary"
-				variant="flat"
+				disabled={disabled || loading || !audioLoaded}
+				variant="contained"
+				color="secondary"
                 aria-label = 'Open modal for options'
 				onClick={this.exportAudioAction}
 				className={classes.button}
 				data-tour-id="export-audio"
 			>
-				<DownloadIcon className={classes.leftIcon} />
+			<DownloadIcon className={classes.leftIcon} />
 				Export
 			</Button>
 			{open && <ExportAudioDialog open={true} onClose={this.onCloseAction}/>}
@@ -78,9 +78,9 @@ const Def = class ExportAudioBtn extends React.Component {
 
 const ExportAudioBtn = withStyles(styles)(
 	connect([
-		'loadingState',
-		'disabledState',
-		'audioLoadedState'
+		'loading',
+		'disabled',
+		'audioLoaded'
 	], actions)(Def)
 );
 // const ExportAudio = Def;

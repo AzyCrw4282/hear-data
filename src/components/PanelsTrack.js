@@ -87,7 +87,7 @@ const Def = class UpperPanelControls extends React.Component {
         
         const configuration = track.config && track.config.scale || {} ;
 		const instrument =  configuration.instrument || DEF_INSTRUMENT;
-		console.log(DEF_INSTRUMENT, configuration.instrument,DEF_INSTRUMENT || configuration.instrument)
+		// console.log(DEF_INSTRUMENT, configuration.instrument,DEF_INSTRUMENT || configuration.instrument)
 
         //non-numerical data cannot be sonified
 		const fields = !data || !data.fields ?

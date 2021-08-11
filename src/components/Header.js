@@ -100,18 +100,7 @@ const Def = class AppHeader extends React.Component {
 		const logo = <img src={hearDataIcon} alt="Data Icon logo" className={classes.logo}/>;
 
 		return <React.Fragment>
-				<IconButton onClick={onDataToggle} label="Click to view data" color="inherit" data-tour-id="data-display-panel">
-					<SpreadsheetIcon/>
-				</IconButton>				
-				<span className={classes.resetButton}>
-				<IconButton label="Reset Project" color="inherit" onClick={this.processResetAction} data-tour-id="reset-project-button">
-					<DeleteIcon/>
-				</IconButton>
-				</span>
-				<IconButton onClick={this.helpButton} label="Click to see help" color="inherit" data-tour-id="show-tour-button">
-					<HelpIcon/>
-				</IconButton>
-		
+
 			<Typography className={classes.title} variant="h5" color="white" component="h1">
 				{APP_WEBSITE_URL ? <a href={APP_WEBSITE_URL} target="_blank" rel="noopener noreferrer">
 					{logo}
@@ -127,7 +116,18 @@ const Def = class AppHeader extends React.Component {
 					</React.Fragment> : null
 				}
 			</Typography>
-
+			<IconButton onClick={onDataToggle} label="Click to view data" color="inherit" data-tour-id="data-display-panel">
+					<SpreadsheetIcon/>
+				</IconButton>				
+				<span className={classes.resetButton}>
+				<IconButton label="Reset Project" color="inherit" onClick={this.processResetAction} data-tour-id="reset-project-button">
+					<DeleteIcon/>
+				</IconButton>
+				</span>
+				<IconButton onClick={this.helpButton} label="Click to see help" color="inherit" data-tour-id="show-tour-button">
+					<HelpIcon/>
+				</IconButton>
+		
 		</React.Fragment>;
 	}
 };

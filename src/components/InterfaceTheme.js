@@ -14,9 +14,9 @@ const globalTheme = createMuiTheme({
 			contrastText: '#000'
 		},
 		secondary: {
-			light: '#ffad42',
+			light: '#6ff9ff',
 			main: '#7B7D7D', 
-			dark: '#bb4d00',
+			dark: '#6ff9ff',
 			contrastText: '#000'
 		},
 		error: orange

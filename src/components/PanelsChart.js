@@ -73,7 +73,6 @@ const Def = class LineChartPanel extends React.Component {
 		} = { ...defaultColors, ...colors };
 
 		ctx.beginPath();
-		console.log(rowCounts);
 		for (let i = 0; i < rowCounts; i++) {
 			const val = normalized[i][fieldIndex];
 			const filterVal = filterByString ?
