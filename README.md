@@ -26,7 +26,8 @@ In the `package.json`, set
 "start": "cross-env NODE_ENV=development webpack-dev-server",
 "dev": "cross-env NODE_ENV=development webpack",
 ```
-Ensure that `npm at at 6.13.2`
+
+Tip: If you encounter any package issues, degrade the `npm` version to `6.13.2`. This version is robust and worked fine on all platform testing. 
 
 ### Tree structure
 
