@@ -1,6 +1,6 @@
 ### Hear-Data
 
-What is this?
+**What is this?**
 
 This is a software engineering project on the topic of data sonification. This application allows you to hear data using the method of sonification.
 
@@ -27,7 +27,7 @@ In the `package.json`, set
 "dev": "cross-env NODE_ENV=development webpack",
 ```
 
-Tip: If you encounter any package issues, degrade the `npm` version to `6.13.2`. This version is robust and worked fine on all platform testing. 
+**Tip:** If you encounter any package issues, degrade the `npm` version to `6.13.2`. This version is robust and worked fine on all platform testing. 
 
 ### Tree structure
 
