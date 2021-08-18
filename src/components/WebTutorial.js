@@ -32,22 +32,22 @@ const tourContents = [
 	},
     { //Tbf
 		title: 'Visual Display',
-		content: 'The bar chart illusrates the visual variance of the graph',
+		content: 'The bar chart illusrates the visual variance of the graph. Whilst playing the sound, an indicator would indicate the current data of sonificaiton. It will be shown in a dark vertical bar',
 		target: '[data-tour-id="bar-chart-visual"]'
 	},
-	{ //Tbf
-		title: 'Visual Current Indicator',
-		content: 'Whilst playing the sound, an indicator would indicate the current data of sonificaiton. It will be shown in a dark vertical bar',
-		target: '[data-tour-id="add-track"]'
-	},
     { 
-		title: 'Field And Instrument',
-		content: 'Change the current field of sonificaiton here. Instruments can also be changed in the adjacent box',
+		title: 'Instrument',
+		content: 'Change the current Instrument here',
 		target: '[data-tour-id="Instrument-Selection"]'
+	},
+	{ 
+		title: 'Field',
+		content: 'Change the current field of sonificaiton here. Default is set to null ',
+		target: '[data-tour-id="Field-Selection"]'
 	},
 	{
 		title: 'Sound Adjustments',
-		content: 'Adjust the tempo, octaves and volume in this section. This is also responsive during play of the sound',
+		content: 'Adjust the tempo, octaves and volume in this section. Toggle this by clicking the expansion button',
 		target: '[data-tour-id="Additional-Selection"]'
 	},
     {

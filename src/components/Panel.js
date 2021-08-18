@@ -179,7 +179,7 @@ const Def = class Panel extends React.Component {
 							expandIcon: classes.expandIcon
 						}}
 						IconButtonProps={{
-							'data-tour-id': 'track-advanced'
+							'data-tour-id': 'bar-chart-visual'
 						}}
 					>					
 						{barchartField > -1 ?

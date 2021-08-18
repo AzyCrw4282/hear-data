@@ -98,12 +98,13 @@ const Def = class UpperPanelControls extends React.Component {
 
 			return <React.Fragment>
 				<div className={classes.root}>
-					<FormControl className={classes.container}>
+					<FormControl className={classes.container} >
 						<WideSelect
 							name="field-value"
 							id={'intensity-field-' + track.id}  			
 							onChange={this.handleFieldChangeEvt}
 							label="Current Field"
+							data-tour-id="Field-Selection"
 							value={track.intensityField > -1 ? track.intensityField : ''}
 							classes={{
 								root: classes.selectedField
