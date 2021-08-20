@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import CanvasEnhancer from './../extensions/CanvasHandler';
 import RemountOnResize from '../store/RemountOnResize';
 
-
 const defaultColors = {
 	main: 'darkred',
 	selected: 'red',
