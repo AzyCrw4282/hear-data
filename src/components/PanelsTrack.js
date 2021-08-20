@@ -48,7 +48,7 @@ const Def = class UpperPanelControls extends React.Component {
 
     handleFieldChangeEvt = et => {
         const intensityField = et.target.value >= 1 ? num(et.target.value, 0) : 0;
-        const {track, setTrack}= this.props;
+        const {track, setTrack}= this.props; //sets to the following two object and functions. The data is flowed from integrated HOC
         setTrack(Object.assign({},track, {
             intensityField
         }),track.id);

@@ -1,12 +1,12 @@
 /*
-Library code that enables panel control
+ * Unused library code. 
+ * Could be used for future improvements
 */
 import React from 'react';
 // import classNames from 'classnames';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
 import num from '../extensions/num';
-import formatData from './FormatData';
 
 /*
 Material UI components
@@ -118,30 +118,7 @@ const Def = class PanelControls extends React.Component {
 		const hasIntensity = !!typeDef.hasIntensity;
 		const TypeControls = typeDef.advanced || null;
 
-		const hasFilterField = track.filterField >= 0 &&
-			track.filterField < data.fields.length &&
-			typeof track.filterField === 'number';
-		const filterFieldIndex = !hasIntensity || hasFilterField ?
-			track.filterField :
-			track.intensityField;
-
-		const filterField = filterFieldIndex >= 0 && data ? data.fields[filterFieldIndex] : null;
-
-		const filterMin = filterField && filterField.type === 'datetime' ?
-			filterField.min :
-			num(filterField && filterField.min, 0);
-		const filterMax = filterField && filterField.type === 'datetime' ?
-			filterField.max :
-			num(filterField && filterField.max, 1);
-		const filterRange = filterMax - filterMin;
-		const filterStep = filterField && (filterField.step || 0) * filterField.scale;
-
 		// todo: support non-numeric fields? And any improvements to this?
-		const fields = !data || !data.fields ?
-			[] :
-			data.fields
-				.map((field, i) => ({...field, i}))
-				.filter(({type, max, min, values}) => max !== min || type === 'string' && values && values.length);
 
 		return <React.Fragment>
 			<div className={classes.controlsCategory}>

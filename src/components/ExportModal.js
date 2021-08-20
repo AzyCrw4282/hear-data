@@ -1,6 +1,6 @@
 /*
-This component handles the downaloading of the notes locally.
-Tbd: Button to individually download the notes by selecting a dialogue.
+* This component handles the downaloading of the notes locally.
+* Credit: Azky & Library code
 */
 
 import React from 'react';

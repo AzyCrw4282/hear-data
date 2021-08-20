@@ -1,7 +1,8 @@
 /*
-This component functions the soruce of data into the program.
-It can be given by the given file types or alternatively via
-(Todo:->) An API endpoint of acceptable file type (Button added)
+* This component functions the soruce of data into the program.
+* It can be given by the given file types or alternatively via
+* (Todo:->) An API endpoint of acceptable file type (Button added)
+* Credit: Azky & Library code
 */
 import React from 'react';
 import { connect } from 'unistore/react';
@@ -134,7 +135,9 @@ const Def = class DataSourceSelector extends React.Component {
 
     onSelect = () => {
 		const id = this.state.selectedId;
+		console.log("137: " + this.props);
 		const { dataSourceId } = this.props;
+		console.log(dataSourceId);
 		if (!dataSourceId) {
 			this.setDataSourceId(id);
 		} else if (id !== dataSourceId) {
@@ -164,7 +167,7 @@ const Def = class DataSourceSelector extends React.Component {
 	setDataSourceId = id => {
 		const matchSample = sampleIdRegex.exec(id);
 		if (matchSample) {
-			console.log('datasource', 'sample', matchSample[1] || '');
+			// console.log('datasource', 'sample', matchSample[1] || '');
 		} else {
 			console.log('datasource', 'upload', id);
 		}

@@ -1,3 +1,7 @@
+/*
+* Handles the feature to submit data source: either as an uploadable or existing file
+* Credit: Azky & Library code
+*/
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import { fileAccepted } from 'react-dropzone/dist/es/utils';

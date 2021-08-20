@@ -1,3 +1,7 @@
+/*
+* Modal/Dialog 
+* Credit: Azky & Library code
+*/
 import React from 'react'; // import classNames from 'classnames';
 import { connect } from 'unistore/react';
 import { actions } from '../store';

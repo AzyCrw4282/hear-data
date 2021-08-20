@@ -1,3 +1,7 @@
+/*
+* Integrational file for the components
+* Credit: Azky & Library code
+*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import Theme from './InterfaceTheme';

@@ -1,8 +1,7 @@
-// This handles the component interaction with the data
-// which consequently changes the movement in that charts
-
-//maps to the DataTable onclick panel
-
+/*
+* This handles the component interaction with the data which consequently changes the movement in that charts
+* Credit: Azky & Library code
+*/
 import React from 'react';
 import classNames from 'classnames';
 import { connect } from 'unistore/react';

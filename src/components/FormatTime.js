@@ -1,3 +1,7 @@
+/*
+* Time formatter for calculations
+* Credit:  Library code
+*/
 export default function formatTime(t, minUnits = 2, secondsPrecision = 1) {
 	t = Math.floor(t / secondsPrecision) * secondsPrecision;
 	const components = [

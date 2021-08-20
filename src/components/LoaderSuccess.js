@@ -1,3 +1,7 @@
+/*
+* Loader
+* Credit: Azky & Library code
+*/
 import React from 'react';
 import Loader from './../extensions/LoaderFunction';
 import Shell from './HeaderHandler';

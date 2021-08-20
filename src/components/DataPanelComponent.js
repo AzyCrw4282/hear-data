@@ -1,3 +1,7 @@
+/*
+* File to integarte components
+* Credit: Azky
+*/
 import React from 'react';
 import { connect } from 'unistore/react';
 

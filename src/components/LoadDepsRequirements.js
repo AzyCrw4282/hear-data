@@ -1,5 +1,5 @@
 /*
-* Inherited library code for requirements handling. This is where audio context is set
+* Inherited library code for requirements handling. This is where audio context is set for library uses.
 */
 
 const specs = [

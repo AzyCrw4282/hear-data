@@ -1,4 +1,8 @@
 /* global DEBUG, APP_TITLE */
+/*
+* Header component fragment for source and the buttons 
+* Credit: Azky & Library code
+*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'unistore/react';

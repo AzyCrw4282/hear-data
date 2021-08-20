@@ -1,3 +1,8 @@
+/* 
+* This component handles the feature to add panels fo sonificaiton.
+* Credit: Azky & Library code
+*/
+
 import React from 'react';
 import classNames from 'classnames';
 import withStyles from '@material-ui/core/styles/withStyles';

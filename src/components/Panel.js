@@ -1,5 +1,6 @@
 /*
-Adopted code from the credited project for front and back-end functions
+* Contains the panel structure as a container
+* Adopted code from the credited project for front and back-end functions
 */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -146,7 +147,8 @@ const Def = class Panel extends React.Component {
 
 	handleToggleMuted = () => {
 		const { track, setTrack } = this.props;
-		setTrack(Object.assign({}, track, {
+		//sets track props objects to for store handlers.
+		setTrack(Object.assign({}, track, { 
 			muted: !track.muted
 		}), track.id);
 	}

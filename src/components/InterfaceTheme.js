@@ -1,3 +1,7 @@
+/*
+* Sets the theme for the Interface
+* Credit: Library code
+*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';

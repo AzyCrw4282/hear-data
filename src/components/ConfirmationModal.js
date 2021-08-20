@@ -1,3 +1,7 @@
+/*
+* Modal prompts for confirmation
+* Credit: Azky & Library code
+*/
 import React from 'react'; 
 import { confirmable } from 'react-confirm';
 import PropTypes from 'prop-types';

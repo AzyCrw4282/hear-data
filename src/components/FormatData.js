@@ -1,3 +1,7 @@
+/*
+* Handler for date calculation
+* Credit: Azky & Library code
+*/
 export default function formatData(field) {
 	if (!field) {
 		return identity;
