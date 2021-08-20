@@ -1,4 +1,7 @@
-//TBD
+/*
+* App tutorial feature.
+* Credit: Azky
+*/
 import React from 'react';
 import Joyride, { ACTIONS, EVENTS } from 'react-joyride';
 import { connect } from 'unistore/react';

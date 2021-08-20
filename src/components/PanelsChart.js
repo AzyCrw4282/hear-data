@@ -1,9 +1,6 @@
-// Handles the visual aspect of the sonificaiton.
-/*This componenet creates the line chart and is then enhanced by the canvasEnhancer
-component. 
-
-e.g.-> Barchart -> TrackBarChart -> Track
-
+/*
+* This componenet creates the line chart, which is then enhanced by the canvasEnhancer
+* Credit: Azky & Library code
 */
 import React from 'react';
 import PropTypes from 'prop-types';

@@ -1,3 +1,8 @@
+/*
+* Add panel definition 
+* Credit: Azky & Library code
+*/
+
 import PanelMediaControls from './PanelsMediaControls'
 import UpperPanelControls from './PanelsTrack'
 import NoteIcon from '@material-ui/icons/NoteAdd';

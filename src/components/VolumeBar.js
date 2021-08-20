@@ -1,7 +1,8 @@
-//voume bar move by the media is not necessary...
 /*
-This componenet handles the volume meter
+* This componenet handles the volume meter
+* Credit: Library code
 */
+
 import React from 'react';
 import { connect } from 'unistore/react';
 import liveEngine from '../engine/live';

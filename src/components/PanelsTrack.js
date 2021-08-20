@@ -1,7 +1,7 @@
-// Tested
-//Handles the source instruments and data selection of cards and *deleteion annd duplicate panel* -- Tbd 
-//same for: Track.js + scaleTrackInstrumentSelect.js
-//Tbd: panl duplicate button, so another is created just like it!
+/*
+* Handles the source instruments and data selection of cards and *deleteion ann duplicate panel*
+* Credit: Azky & Library code
+*/
 
 import React from 'react';
 import PropTypes from 'prop-types';

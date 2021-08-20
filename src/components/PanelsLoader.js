@@ -1,3 +1,7 @@
+/*
+* Panels loader
+* Credit: Azky & Library code
+*/
 import React from 'react';
 import { connect } from 'unistore/react';
 import { actions } from '../store';

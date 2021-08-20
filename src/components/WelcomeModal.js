@@ -1,5 +1,8 @@
 /* global APP_TITLE */
-//fixed and tested
+/*
+* Welcome modal/dialog
+* Credit: Azky & Library code
+*/
 import React from 'react';
 
 import withStyles from '@material-ui/core/styles/withStyles';
