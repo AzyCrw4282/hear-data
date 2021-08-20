@@ -1,5 +1,5 @@
 /*
-* This componenet creates the line chart, which is then enhanced by the canvasEnhancer
+* This componenet creates the line chart, which is then enhanced by the canvasEnhancer.
 * Credit: Azky & Library code
 */
 import React from 'react';
