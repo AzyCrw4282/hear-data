@@ -95,7 +95,7 @@ function assetSort(a, b) {
 }
 
 const uploadRequirements = [
-	'File types supported: .xls, .xlsx, .csv',
+	'File types supported: .xls, .xlsx, .csv', '.json',
 	`Please ensure they have Column headers`,
 	`Maximum file size: ${Math.round(5 * 1024 * 1024 / (1024 * 1024) * 100) / 100}MB`
 ].map((text, i) =>

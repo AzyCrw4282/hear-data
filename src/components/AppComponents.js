@@ -13,9 +13,9 @@ import { lighten, darken } from '@material-ui/core/styles/colorManipulator';
 import Paper from '@material-ui/core/Paper';
 import Drawer from '@material-ui/core/Drawer';
 
-import VolumeBar from './VolumeBar'
+import VolumeBar from './VolumeBar';
 import Shell from './HeaderHandler';
-import AppHeader from './Header';//Tbc - loading screen displayed under loding condition
+import AppHeader from './Header'; //Tbc - loading screen displayed under loding condition
 import PlayControls from './MediaControls';
 import DataSelectDialog from './DataSourceSelector';
 import AddPanelButton from './AddPanelButton';

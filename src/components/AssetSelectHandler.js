@@ -206,10 +206,6 @@ const Def = class AssetSelectDialog extends React.Component {
 				const match = extRegex.exec(file.fileName || '');
 				importFileType = match && match[1] || 'unknown';
 			}
-			// logMetricsEvent('import', this.props.type || 'file', {
-			// 	importFileSize: file.size,
-			// 	importFileType
-			// });
 		});
 
 		if (!errorMessage && this.props.onUpload && assets.length) {
@@ -303,7 +299,7 @@ const Def = class AssetSelectDialog extends React.Component {
 			}
 			<Snackbar
 				message={errorMessage}
-				open={!!errorMessage}
+				open={!!errorMessage} //boolean conversion 
 				autoHideDuration={3000}
 				onClose={this.onCloseSnackbar}
 				anchorOrigin={{

@@ -18,6 +18,7 @@ const ExportAudioDialog = asyncComponent(() => import('./ExportAudioModal'), {
 const styles = theme => ({
 	button: {
 		margin: 4,
+		marginTop: '20px',
         color: 'primary',
 
 	},

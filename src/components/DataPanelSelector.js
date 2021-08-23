@@ -67,7 +67,7 @@ const Def = class TablePanel extends React.Component {
 				}
 			};
         });
-		const cellValues = this.props.data.rows.map((row, i) => [
+		const cellValues = this.props.data.rows.map((row, i) => [ //rows values are mapped from the HOC integration in the parent file `DataPanelComponent.js`
 			i,
 			...row
 		]);
