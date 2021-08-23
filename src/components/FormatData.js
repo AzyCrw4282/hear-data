@@ -2,6 +2,46 @@
 * Handler for date calculation
 * Credit: Azky & Library code
 */
+const intlNumberFormat = new Intl.NumberFormat();
+
+const identity = v => v;
+
+const boolean = v => v ? 'true' : 'false';
+
+const number = v => intlNumberFormat.format(v);
+
+const exponential = v => v !== null && v !== undefined && v.toExponential ?
+	v.toExponential(2) :
+	v;
+
+/*
+Dates and times are all stored in UTC time zone.
+They will be converted to local time zone for display
+*/
+const datetime = v => {
+	const d = new Date(v);
+	const tzOffset = d.getTimezoneOffset();
+	d.setTime(d.getTime() + tzOffset * 60 * 1000);
+
+	return d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
+};
+
+const time = v => {
+	const d = new Date(v);
+	const tzOffset = d.getTimezoneOffset();
+	d.setTime(d.getTime() + tzOffset * 60 * 1000);
+
+	return d.toLocaleTimeString();
+};
+
+const date = v => {
+	const d = new Date(v);
+	const tzOffset = d.getTimezoneOffset();
+	d.setTime(d.getTime() + tzOffset * 60 * 1000);
+
+	return d.toLocaleDateString();
+};
+
 export default function formatData(field) {
 	if (!field) {
 		return identity;
@@ -44,5 +84,7 @@ export default function formatData(field) {
 			time :
 			datetime;
 	}
+
 	return identity;
 }
+
