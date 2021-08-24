@@ -36,7 +36,6 @@ const Def = class ExportAudioBtn extends React.Component {
 		audioLoaded: PropTypes.bool
 	}
 
-
 	state = {
 		open: false
 	}

@@ -29,7 +29,7 @@ const datetime = v => {
 const time = v => {
 	const d = new Date(v);
 	const tzOffset = d.getTimezoneOffset();
-	d.setTime(d.getTime() + tzOffset * 60 * 1000);
+	d.setTime(d.getTime() + tzOffset * 60 * 1000); //time value in millisecond since epoch and then the offset calculation for current value display
 
 	return d.toLocaleTimeString();
 };

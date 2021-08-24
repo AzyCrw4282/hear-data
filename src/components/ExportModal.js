@@ -1,5 +1,5 @@
 /*
-* This component handles the downaloading of the notes locally.
+* This component handles the downloading of the notes locally.
 * Credit: Azky & Library code
 */
 
@@ -44,10 +44,6 @@ const styles = () => ({
 });
 
 const sampleRate = 44100;
-const KBDivider = 1000;
-
-const KBFormat = new Intl.NumberFormat(navigator.language, {maximumFractionDigits: 0});
-const MBFormat = new Intl.NumberFormat(navigator.language, {maximumFractionDigits: 0,});
 
 const Def = class ExportModal extends React.Component {
 	static propTypes = {
@@ -251,31 +247,3 @@ const ExportAudioDialog = withStyles(styles)(
 );
 
 export default ExportAudioDialog;    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
