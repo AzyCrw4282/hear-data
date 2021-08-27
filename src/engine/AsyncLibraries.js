@@ -126,7 +126,7 @@ function asyncComponent(importComponent, options = {}) {
 			if (this.state.failed && !this.state.requested && failComponents) {
 				if (typeof failComponents === 'function') {
 					const F = failComponents;
-					return <F onRetry={this.retry} connected={this.state.connected}/>;
+					return <F onRetry={this.retry} connected={this.state.connected}/>; //retuns the requires attributes here to use in the loader component props
 				}
 				return failComponents;
 			}

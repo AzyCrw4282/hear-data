@@ -36,12 +36,14 @@ const Def = class LoadError extends React.Component {
 		isConnected: PropTypes.bool
 	}
 
+
 	onClick = () => {
 		this.props.retryHandler();
 	}
 
 	render() {
 		const { classes, isConnected } = this.props;
+		// console.log(this.props); for debugging
 		return <div className={classes.root}>
 			<div className={classes.warning}>
 				<ErrorIcon className={classes.icon}/>
@@ -49,7 +51,8 @@ const Def = class LoadError extends React.Component {
 					<div>
 						<Typography>Server error - unable to load the app!</Typography>
 						<Button color="primary" onClick={this.onClick}>Retry</Button>
-					</div> :
+					</div> 
+					:
 					<Typography>Cannot be loaded. Error with the server or connection issue.</Typography>
 				}
 			</div>

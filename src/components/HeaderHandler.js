@@ -54,7 +54,7 @@ const Def = class BarComponents extends React.Component {
 			header,
 			children
 		} = this.props;
-
+		// {children refers to objects?}
         
         <Typography variant="h4" color="inherit" className={classes.titleValue} component="h1">
             {this.props.title}

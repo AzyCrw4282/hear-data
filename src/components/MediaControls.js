@@ -16,7 +16,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 import Slider from './../extensions/Sliders';
 import ExportAudioButton from './ExportBtnFunc';
-// import DurationControl from './DurationControl';
 import IconButton from '../extensions/IconButton';
 import formatTime from './FormatTime';
 
@@ -173,11 +172,9 @@ const Def = class PlayControls extends React.Component {
 				:
 					<CircularProgress size={100}  classes={{colorPrimary: classes.loading}}/>
 				}
-
 					<IconButton disabled={disabled} className={classes.rewind} label="Reset" onClick={this.rewindBeginning}>
 						<SkipPrevious />
 					</IconButton>
-					{/* <DurationControl/> */}
 
 				<ExportAudioButton/>	
 			</div>

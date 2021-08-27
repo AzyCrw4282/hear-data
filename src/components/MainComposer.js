@@ -26,12 +26,11 @@ const Def = class Main extends React.Component {
 			this.props.onError(error);
 		}
 	}
-
+	//returned props from asyncComponent will have attributes in `this.props`
+	// loadSpecs() -> StoreHandler -> AppComponent will allow first application construction
 	render() {
 		return <Theme>
-
-            <StoreApp {...this.props}/>
-			
+            <StoreApp {...this.props}/> 
         </Theme>;
 	}
 };

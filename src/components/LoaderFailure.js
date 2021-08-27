@@ -5,8 +5,7 @@
 */
 import React from 'react';
 import LoadError from './Loader';
-import Shell from './Shell';
-
+import Shell from './HeaderHandler';
 
 const Def = props =>
 	<Shell title={APP_TITLE}>

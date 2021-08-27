@@ -27,8 +27,6 @@ import IconButton from '../extensions/IconButton';
 import BarChartPanel from './PanelChartHandler';
 import PanelControls from './PanelControls';
 
-
-
 const confirm = createConfirmation(ConfirmationDialog);
 
 const styles = (theme) => ({
@@ -37,7 +35,7 @@ const styles = (theme) => ({
 		display: 'flex'
 	},
 	expansionPanel: {
-		flex: 1,
+		flex: 1, //same func as flex-grow: 1 to defaul growth of div size proportional to the window size
 		margin: 0,
 		borderRadius: 0,
 		boxShadow: 'none',
@@ -162,12 +160,12 @@ const Def = class Panel extends React.Component {
 		} = this.props;
 
 		const typeDef = trackTypes[track.type];
-		const hasIntensity = !!typeDef.hasIntensity;
+		const hasIntensity = !!typeDef.hasIntensity; //casts to boolean value
 		const TypeIcon = typeDef.icon;
 		const TypeHeaderControl = typeDef.headerControl || null;
 		const TypeControls = typeDef.controls || null;
 
-		const barchartField = hasIntensity && track.intensityField > -1 ?track.intensityField : track.filterField;
+		const barchartField = hasIntensity && track.intensityField > -1 ? track.intensityField : track.filterField;
 
 		return <div ref={ref => this.props.nodeRef(ref, track.id)} id={'track-' + sortIndex}>
 			<Paper className={classes.root} elevation={1} id={'track-' + track.id}>
@@ -194,23 +192,23 @@ const Def = class Panel extends React.Component {
 								min={track.filterRange && track.filterRange[0] || 0}
 								max={track.filterRange ? track.filterRange[1] : 1}
 								disabled={!!track.muted}
-							/> :
+							/> 
+							:
 							null
 						}
 						<div className={classes.header} data-tour-id={'track-control-header-' + sortIndex}>
-								<IconButton label="Toggle Mute Track" className={classes.volumeButton} onClick={this.handleToggleMuted}>
-									{ track.muted ? <VolumeOffIcon color="disabled" /> : <VolumeUpIcon color="action" /> }
-								</IconButton>
-								<IconButton onClick={this.deleteTrack} label="Delete Track">
-									<DeleteIcon/>
-								</IconButton>
-						</div>							
+							<IconButton label="Toggle Mute Track" className={classes.volumeButton} onClick={this.handleToggleMuted}>
+								{ track.muted ? <VolumeOffIcon color="disabled" /> : <VolumeUpIcon color="action" /> }
+							</IconButton>
+							<IconButton onClick={this.deleteTrack} label="Delete Track">
+								<DeleteIcon/>
+							</IconButton>
+						</div>
 						<div className={classes.header} data-tour-id={'track-control-header-' + sortIndex}>
 							<Tooltip title={typeDef.name}>
 								<TypeIcon color="action"/>
 							</Tooltip>
 							{TypeHeaderControl && <TypeHeaderControl track={track}/>}
-
 						</div>
 						{TypeControls && <TypeControls track={track}/>}
 					</ExpansionPanelSummary>

@@ -142,6 +142,7 @@ const AppHeader = withStyles(styles)(
 );
 
 export default AppHeader;
+
 /*
 withStyles and connect are Higher Order Components (HOC), which is a pattern where you 
 take a component and you add features to it by wrapping a new component around it 
