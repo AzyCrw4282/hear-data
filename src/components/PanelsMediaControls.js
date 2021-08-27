@@ -112,7 +112,6 @@ const Def = class PanelMediaControls extends React.Component {
 		setTrack(track, track.id);
 	}
 
-	//error here. Tbs..
 	handleToggleVolume = () => {
 		const { track, setTrack } = this.props;
 		setTrack(Object.assign({}, track, {
@@ -167,7 +166,6 @@ const Def = class PanelMediaControls extends React.Component {
 			</FormControl> 
             : 
             null}
-
 			<FormControl className={classes.keyControlGroup}>
 				<InputLabel htmlFor={'track-tempo-factor-' + track.id} >Tempo</InputLabel>
 				<Select

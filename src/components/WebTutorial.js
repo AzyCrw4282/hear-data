@@ -190,7 +190,6 @@ const Def = class Tour extends React.Component {
 			showSkipButton
 			continuous
 			disableScrollParentFix
-
 			callback={this.handleJoyrideCallback}
 			styles={tipStyles}
             debug={DEBUG}

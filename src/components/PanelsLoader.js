@@ -1,5 +1,5 @@
 /*
-* Panels loader
+* Panels loader and handler in the interface
 * Credit: Azky & Library code
 */
 import React from 'react';

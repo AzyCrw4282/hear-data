@@ -74,7 +74,7 @@ const Def = class UpperPanelControls extends React.Component {
 			...prevTrack,
 			config
 		};
-		setTrack(track, track.id);
+		setTrack(track, track.id); // TBE
     }
 
 
@@ -88,7 +88,6 @@ const Def = class UpperPanelControls extends React.Component {
         const configuration = track.config && track.config.scale || {} ;
 		const instrument =  configuration.instrument || DEF_INSTRUMENT;
 		// console.log(DEF_INSTRUMENT, configuration.instrument,DEF_INSTRUMENT || configuration.instrument)
-
         //non-numerical data cannot be sonified
 		const fields = !data || !data.fields ?
 			[] :
@@ -124,7 +123,6 @@ const Def = class UpperPanelControls extends React.Component {
 							id={'track-instrument-' + track.id}
 							value={instrument}          
 							label="Instrument"
-							
 							onChange={this.handleInstrumentChangeEvt}
 							inputProps={{
 								name: 'instrument'

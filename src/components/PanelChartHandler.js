@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
-
 import withStyles from '@material-ui/core/styles/withStyles';
 import PropTypes from 'prop-types';
 
@@ -39,7 +38,9 @@ const Def = class TrackBarChart extends React.Component {
 			selected: palette.grey[500],
 			disabled: palette.grey[disabledGrey],
 			disabledSelected: palette.grey[disabledGrey]
-		} : {
+		} 
+		: 
+		{
 			main: paletteType === 'dark' ?
 				palette.primary.dark :
 				palette.primary.light,

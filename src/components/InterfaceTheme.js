@@ -27,6 +27,8 @@ const globalTheme = createMuiTheme({
 	}
 });
 
+// Default space value of value is 8px is applied. Referred to in the styling.
+
 const Def = ({children}) =>
 	<MuiThemeProvider theme={globalTheme}>{children}</MuiThemeProvider>;
 

@@ -44,7 +44,7 @@ const styles = theme => ({
 	},
 
 	logo: {
-		margin: theme.spacing.unit * 3,
+		margin: theme.spacing.unit * 3, //default value of spacing is applied throughout
 		alignSelf: 'Right',
 		textAlign: 'center',
         margin: '20px',

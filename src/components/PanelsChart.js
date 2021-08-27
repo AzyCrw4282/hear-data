@@ -90,7 +90,9 @@ const Def = class LineChartPanel extends React.Component {
 				const valueHeight = height * (zero - val);
 				const heights = Math.abs(valueHeight) < ratio ? zeroHeight : valueHeight; // so bar is at least 1px high
 
-				if (i !== rowCounts - 1){ctx.fillRect(xPoint, yPoint, w/10, heights);}
+				if (i !== rowCounts - 1){
+					ctx.fillRect(xPoint, yPoint, w/10, heights);
+				}
 				ctx.strokeStyle = 'green';
 				ctx.lineWidth = 1;
 				ctx.stroke();
