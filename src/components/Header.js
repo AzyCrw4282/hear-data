@@ -71,20 +71,30 @@ const Def = class AppHeader extends React.Component {
 
     //handles reset action
 	processResetAction = evt => {
-		evt.stopPropagation();
-		const confirmation = <React.Fragment>Please confirm you want to reset this data?</React.Fragment>;
-		confirm({ confirmation, options: {
-			no: 'No',
-			yes: 'Yes'
-		}}).then(() => {
-			this.props.resetState();
-			return null;
-		}).catch(() => {
-			if (DEBUG) {
-				console.log('Not clearing. Everything is fine.');
-			}
-		});
+		// console.log("73")
+		// evt.stopPropagation();
+		// const confirmation = <React.Fragment>Please confirm you want to reset this data?</React.Fragment>;
+		// confirm({ confirmation, options: {
+		// 	no: 'No',
+		// 	yes: 'Yes'
+		// }}).then(() => {
+		// 	this.props.resetState();
+		// 	return null;
+		// }).catch(() => {
+		// 	if (DEBUG) {
+		// 		console.log('Not clearing. Everything is fine.');
+		// 	}
+		// });
+		if (window.confirm('Please confirm you want to reset this data?')) {
+			// Save it!
+			console.log('Environment Reset');
+		  } else {
+			// Do nothing!
+			console.log('Process Cancelled');
+		  }
 	}
+
+	
 
     //handles help action
 	helpButton = () => {
@@ -131,7 +141,6 @@ const Def = class AppHeader extends React.Component {
 				<IconButton onClick={this.helpButton} label="Click to see help" color="inherit" data-tour-id="show-tour-button">
 					<HelpIcon/>
 				</IconButton>
-		
 		</React.Fragment>;
 	}
 };

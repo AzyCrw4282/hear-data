@@ -135,7 +135,7 @@ const Def = class DataSourceSelector extends React.Component {
 
     onSelect = () => {
 		const id = this.state.selectedId;
-		console.log("137: " + this.props);
+		// console.log("137: " + this.props);
 		const { dataSourceId } = this.props;
 		console.log(dataSourceId);
 		if (!dataSourceId) {
@@ -224,7 +224,6 @@ const Def = class DataSourceSelector extends React.Component {
 
 		return <AssetSelectDialog
 			id="data-select"
-			{...props}
 			assetLibrary={dataLibrary}
 			getFileData={parseSpreadSheet}
 			title="Select Data Source"
@@ -235,6 +234,7 @@ const Def = class DataSourceSelector extends React.Component {
 			onSelect={this.onSelect}
 			onUpload={this.onUpload}
 			dropZone={<div className={classes.dropZone}>{dropZoneContent}</div>}
+			{...props}
 		>
 			<Typography variant="subtitle1">Pick any of the given data source or uploading a spreadsheet of your own!</Typography>
 			<Table className={classes.table}>
