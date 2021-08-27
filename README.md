@@ -48,8 +48,13 @@ I have used numerous third party libraries to satisfy the requiresd features in 
 
 For configuration and sound integration, I have used the following project from [here](https://github.com/datavized/twotone)
 
--- The configurations for this project (such as: eslint, packages, babel, webpack, etc.) have been inherited from a similar project to speed up developmenet.
+--The configurations for this project (such as: eslint, packages, babel, webpack, etc.) have been inherited from a similar project to speed up developmenet.
 
 --The 'engine/` dir is an external directory that handles encoding and processing in this project.
 
+### Links
+
+--The project on Github: https://github.com/AzyCrw4282/hear-data
+
 --The active Trello profile: https://trello.com/b/eZObcmYb/project-plans
+
