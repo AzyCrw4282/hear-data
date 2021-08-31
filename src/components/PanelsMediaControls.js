@@ -74,23 +74,45 @@ const Def = class PanelMediaControls extends React.Component {
 		setTrack: PropTypes.func.isRequired
 	}
 
-	modifiedTrackConfig = (prevTrackNote, name, value) => {
-		const oldConfig = prevTrackNote.config || {};
+	// modifiedTrackConfig = (oldTrack, name, value) => {
+	// 	const oldConfig = oldTrack.config || {};
+	// 	const oldScaleConfig = oldConfig.scale || {};
+
+	// 	const scaleNote = {
+	// 		...oldScaleConfig,
+	// 		[name]: value
+	// 	};
+
+	// 	const configNote = {
+	// 		...oldConfig,
+	// 		scaleNote
+	// 	};
+
+	// 	const track = {
+	// 		...oldTrack,
+	// 		configNote
+	// 	};
+	// 	return track;
+	// }
+
+	//library configuration code
+	modifiedTrackConfig = (oldTrack, name, value) => {
+		const oldConfig = oldTrack.config || {};
 		const oldScaleConfig = oldConfig.scale || {};
 
-		const scaleNote = {
+		const scale = {
 			...oldScaleConfig,
 			[name]: value
 		};
 
-		const configNote = {
+		const config = {
 			...oldConfig,
-			scaleNote
+			scale
 		};
 
 		const track = {
 			...oldTrack,
-			configNote
+			config
 		};
 		return track;
 	}
@@ -155,7 +177,7 @@ const Def = class PanelMediaControls extends React.Component {
 				<InputLabel htmlFor={'track-scale-range-' + track.id}>Octave Scale</InputLabel>
 				<Select
 					value={Math.min(maxOctaveRange, scaleRangeOctaves)}
-					onChange={this.handleChangeOctave}
+					onChange={this.handleOctaveScale}
 					inputProps={{
 						name: 'track-scale-range',
 						id: 'track-scale-range-' + track.id
